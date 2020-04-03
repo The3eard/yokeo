@@ -20,10 +20,151 @@
       integrity="sha256-rByPlHULObEjJ6XQxW/flG2r+22R5dKiAoef+aXWfik="
       crossorigin="anonymous"
     />
+    <link
+      href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
+      rel="stylesheet"
+      integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN"
+      crossorigin="anonymous"
+    />
+    <!-- CSS -->
+    <link rel="stylesheet" href="css/style.css" />
   </head>
   <body>
     <!-- HTML -->
-    <h1>Prueba</h1>
+    <!-- Nav -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark shadow fixed-top">
+      <div class="container">
+        <a class="navbar-brand" href="#">yokeo!</a>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-toggle="collapse"
+          data-target="#navbarResponsive"
+          aria-controls="navbarResponsive"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item active">
+              <a class="nav-link" href="#">Inicio </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Crear evento </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Iniciar sesión</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Registrarse</a>
+            </li>
+            <li class="nav-item dropdown">
+              <a
+                class="nav-link dropdown-toggle"
+                href="#"
+                id="navbarDropdown"
+                role="button"
+                data-toggle="dropdown"
+                aria-haspopup="true"
+                aria-expanded="false"
+              >
+                Mi cuenta
+              </a>
+              <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                <a class="dropdown-item" href="#">Mis datos</a>
+                <div class="dropdown-divider"></div>
+                <a class="dropdown-item" href="#">Cerrar sesión</a>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+    <!-- Landing page -->
+    <header class="landing">
+      <div class="container h-100">
+        <div class="row h-100 align-items-center">
+          <div class="col-12 text-center">
+            <h1 class="font-weight-dark display-1">
+              <strong>
+                yokeo!
+                <!-- pendiente de logo e imagen -->
+              </strong>
+            </h1>
+            <p class="lead display-4">¡Planifica tus eventos en un keo!</p>
+            <br />
+            <p>
+              Estás a un paso de poder organizarte con tus amigos de manera
+              sencilla, rápida y sin complicaciones.
+            </p>
+          </div>
+        </div>
+      </div>
+    </header>
+    <!-- Contents -->
+    <div class="py-5">
+      <div class="container">
+        <form>
+          <div class="form-group row">
+            <label for="formRegUser" class="col-4 col-form-label"
+              >Nombre de usuario</label
+            >
+            <div class="col-8">
+              <div class="input-group">
+                <div class="input-group-prepend">
+                  <div class="input-group-text">
+                    <i class="fa fa-user-o"></i>
+                  </div>
+                </div>
+                <input
+                  id="formRegUser"
+                  name="formRegUser"
+                  placeholder="Introduzca su nombre de usuario"
+                  type="text"
+                  class="form-control"
+                  aria-describedby="formRegUserHelpBlock"
+                  required="required"
+                />
+              </div>
+              <span id="formRegUserHelpBlock" class="form-text text-muted"
+                >Longitud entre 4 y 20 caracteres. Solo letras y números</span
+              >
+            </div>
+          </div>
+          <div class="form-group row">
+            <label for="formRegMail" class="col-4 col-form-label"
+              >Correo electrónico</label
+            >
+            <div class="col-8">
+              <div class="input-group">
+                <div class="input-group-prepend">
+                  <div class="input-group-text">
+                    <i class="fa fa-envelope-o"></i>
+                  </div>
+                </div>
+                <input
+                  id="formRegMail"
+                  name="formRegMail"
+                  placeholder="Introduzca su dirección de correo electrónico"
+                  type="text"
+                  class="form-control"
+                  required="required"
+                />
+              </div>
+            </div>
+          </div>
+          <div class="form-group row">
+            <div class="offset-4 col-8">
+              <button name="submit" type="submit" class="btn btn-primary">
+                Submit
+              </button>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
     <!-- JavaScript -->
     <script>
       test();
@@ -31,6 +172,7 @@
         console.log("todo OK");
       }
     </script>
+    <script src="js/user.js"></script>
     <script src="js/index.js"></script>
     <!-- jQuery, jQueryUI, Popper and Bootstrap -->
     <script

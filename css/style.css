@@ -1,0 +1,32 @@
+/* Paleta de colores */
+.ykcyan {
+  color: #83d1ca;
+}
+.yklightblue {
+  color: #00bcd4;
+}
+.ykpink {
+  color: #f43086;
+}
+.yklightpink {
+  color: #ff89b4;
+}
+.yklime {
+  color: #c7d943;
+}
+.ykgrey {
+  color: #bfbfbf;
+}
+body {
+  background-color: #b2dfdb;
+}
+.landing {
+  height: 100vh;
+  min-height: 500px;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+.bg-dark {
+  opacity: 70%;
+}
