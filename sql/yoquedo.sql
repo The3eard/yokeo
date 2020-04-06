@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 31-03-2020 a las 20:53:17
+-- Tiempo de generación: 06-04-2020 a las 17:49:36
 -- Versión del servidor: 10.4.11-MariaDB
 -- Versión de PHP: 7.4.3
 
@@ -29,182 +29,116 @@ USE `yoquedo`;
 --
 -- Estructura de tabla para la tabla `evento`
 --
--- Creación: 31-03-2020 a las 18:04:47
---
 
+DROP TABLE IF EXISTS `evento`;
 CREATE TABLE `evento` (
   `id` int(11) NOT NULL,
   `nombre` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- RELACIONES PARA LA TABLA `evento`:
---
 
 -- --------------------------------------------------------
 
 --
 -- Estructura de tabla para la tabla `fechapropuesta`
 --
--- Creación: 31-03-2020 a las 18:19:09
---
 
+DROP TABLE IF EXISTS `fechapropuesta`;
 CREATE TABLE `fechapropuesta` (
   `idFecha` int(11) NOT NULL,
   `idEvento` int(11) NOT NULL,
   `fecha` datetime NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
---
--- RELACIONES PARA LA TABLA `fechapropuesta`:
---   `idEvento`
---       `evento` -> `id`
---
-
 -- --------------------------------------------------------
 
 --
 -- Estructura de tabla para la tabla `fechavotada`
 --
--- Creación: 31-03-2020 a las 18:32:51
---
 
+DROP TABLE IF EXISTS `fechavotada`;
 CREATE TABLE `fechavotada` (
   `idFechaVotada` int(11) NOT NULL,
   `idFechaPropuesta` int(11) NOT NULL,
   `emailUsuario` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
---
--- RELACIONES PARA LA TABLA `fechavotada`:
---   `idFechaPropuesta`
---       `fechapropuesta` -> `idFecha`
---   `emailUsuario`
---       `usuario` -> `email`
---
-
 -- --------------------------------------------------------
 
 --
 -- Estructura de tabla para la tabla `lugarpropuesto`
 --
--- Creación: 31-03-2020 a las 18:28:40
---
 
+DROP TABLE IF EXISTS `lugarpropuesto`;
 CREATE TABLE `lugarpropuesto` (
   `idLugar` int(11) NOT NULL,
   `idEvento` int(11) NOT NULL,
   `nombre` varchar(255) NOT NULL,
-  `urlMap` varchar(255) NOT NULL
+  `lat` float NOT NULL,
+  `lng` float NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- RELACIONES PARA LA TABLA `lugarpropuesto`:
---   `idEvento`
---       `evento` -> `id`
---
 
 -- --------------------------------------------------------
 
 --
 -- Estructura de tabla para la tabla `lugarvotado`
 --
--- Creación: 31-03-2020 a las 18:41:11
---
 
+DROP TABLE IF EXISTS `lugarvotado`;
 CREATE TABLE `lugarvotado` (
   `idLugarVotado` int(11) NOT NULL,
   `idLugarPropuesto` int(11) NOT NULL,
   `emailUsuario` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
---
--- RELACIONES PARA LA TABLA `lugarvotado`:
---   `idLugarVotado`
---       `lugarpropuesto` -> `idLugar`
---   `emailUsuario`
---       `usuario` -> `email`
---
-
 -- --------------------------------------------------------
 
 --
 -- Estructura de tabla para la tabla `objetopropuesto`
 --
--- Creación: 31-03-2020 a las 18:29:15
---
 
+DROP TABLE IF EXISTS `objetopropuesto`;
 CREATE TABLE `objetopropuesto` (
   `idObjeto` int(11) NOT NULL,
   `idEvento` int(11) NOT NULL,
   `nombre` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
---
--- RELACIONES PARA LA TABLA `objetopropuesto`:
---   `idEvento`
---       `evento` -> `id`
---
-
 -- --------------------------------------------------------
 
 --
 -- Estructura de tabla para la tabla `objetousuario`
 --
--- Creación: 31-03-2020 a las 18:42:04
---
 
+DROP TABLE IF EXISTS `objetousuario`;
 CREATE TABLE `objetousuario` (
   `idObjetoUsuario` int(11) NOT NULL,
   `idLugarPropuesto` int(11) NOT NULL,
   `emailUsuario` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
---
--- RELACIONES PARA LA TABLA `objetousuario`:
---   `idObjetoUsuario`
---       `objetopropuesto` -> `idObjeto`
---   `emailUsuario`
---       `usuario` -> `email`
---
-
 -- --------------------------------------------------------
 
 --
 -- Estructura de tabla para la tabla `participa`
 --
--- Creación: 31-03-2020 a las 18:06:27
---
 
+DROP TABLE IF EXISTS `participa`;
 CREATE TABLE `participa` (
   `idEvento` int(11) NOT NULL,
   `emailUsuario` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- RELACIONES PARA LA TABLA `participa`:
---   `idEvento`
---       `evento` -> `id`
---   `emailUsuario`
---       `usuario` -> `email`
---
 
 -- --------------------------------------------------------
 
 --
 -- Estructura de tabla para la tabla `usuario`
 --
--- Creación: 31-03-2020 a las 17:59:47
---
 
+DROP TABLE IF EXISTS `usuario`;
 CREATE TABLE `usuario` (
   `email` varchar(255) NOT NULL,
   `nick` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- RELACIONES PARA LA TABLA `usuario`:
---
 
 --
 -- Índices para tablas volcadas
@@ -367,52 +301,6 @@ ALTER TABLE `objetousuario`
 ALTER TABLE `participa`
   ADD CONSTRAINT `participa_ibfk_1` FOREIGN KEY (`idEvento`) REFERENCES `evento` (`id`),
   ADD CONSTRAINT `participa_ibfk_2` FOREIGN KEY (`emailUsuario`) REFERENCES `usuario` (`email`);
-
-
---
--- Metadatos
---
-USE `phpmyadmin`;
-
---
--- Metadatos para la tabla evento
---
-
---
--- Metadatos para la tabla fechapropuesta
---
-
---
--- Metadatos para la tabla fechavotada
---
-
---
--- Metadatos para la tabla lugarpropuesto
---
-
---
--- Metadatos para la tabla lugarvotado
---
-
---
--- Metadatos para la tabla objetopropuesto
---
-
---
--- Metadatos para la tabla objetousuario
---
-
---
--- Metadatos para la tabla participa
---
-
---
--- Metadatos para la tabla usuario
---
-
---
--- Metadatos para la base de datos yoquedo
---
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

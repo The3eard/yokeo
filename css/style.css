@@ -63,6 +63,7 @@ body {
   height: 100%;
   margin: 0;
   padding: 0;
+  overflow-x: hidden !important;
 }
 
 #description {
@@ -139,5 +140,10 @@ body {
 }
 
 fieldset {
+  margin: 0 auto !important;
+}
+
+.formNewPlacesAdd {
+  position: relative !important;
   margin: 0 auto !important;
 }

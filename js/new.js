@@ -84,3 +84,9 @@ function getLocation(dir) {
     /* Pasamos data a la funcion que cree la entrada en DB */
   }
 }
+
+$(function () {
+  $("#datepicker").datepicker({
+    formatDate: "d-MM-yy",
+  });
+});

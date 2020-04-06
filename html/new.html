@@ -66,59 +66,130 @@
     </nav>
     <!-- Contents -->
     <div style="height: 5em;"></div>
-    <fieldset id="fieldsetMaps" class="col-8 align-self-center">
-      <form>
-        <div class="form-group row">
-          <label for="formNewName" class="col-4 col-form-label">Nombre</label>
-          <div class="col-8">
-            <div class="input-group">
+    <fieldset class="col-11 col-md-6 align-self-center">
+      <span class="col-11 col-md-6"
+        ><h1 class="offset-md-4">¡Crea tu evento!</h1></span
+      >
+      <div class="form-group row">
+        <label for="formNewName" class="col-4 col-form-label">Nombre</label>
+        <div class="col-8">
+          <div class="input-group">
+            <div class="input-group-prepend">
+              <div class="input-group-text">
+                <i class="fa fa-angellist"></i>
+              </div>
+            </div>
+            <input
+              id="formNewName"
+              name="formNewName"
+              placeholder="Introduzca el nombre de su evento"
+              type="text"
+              class="form-control"
+              required="required"
+            />
+          </div>
+        </div>
+      </div>
+      <div class="form-group row">
+        <label for="formNewDes" class="col-4 col-form-label">Descripción</label>
+        <div class="col-8">
+          <div class="input-group">
+            <div class="input-group-prepend">
+              <div class="input-group-text">
+                <i class="fa fa-audio-description"></i>
+              </div>
+            </div>
+            <input
+              id="formNewDes"
+              name="formNewDes"
+              placeholder="Introduzca descripción"
+              type="text"
+              class="form-control"
+            />
+          </div>
+        </div>
+      </div>
+      <div id="formNewDate">
+        <label>Introduzca fechas</label>
+        <div class="row">
+          <div class="col-12 col-md-4">
+            <div class="input-group col-12">
               <div class="input-group-prepend">
                 <div class="input-group-text">
-                  <i class="fa fa-angellist"></i>
+                  <i class="fa fa-calendar"></i>
                 </div>
               </div>
               <input
-                id="formNewName"
-                name="formNewName"
-                placeholder="Introduzca el nombre de su evento"
                 type="text"
+                id="datepicker"
+                placeholder="Seleccione fecha"
+                id="formNewDateTxt"
                 class="form-control"
                 required="required"
               />
             </div>
-          </div>
-        </div>
-        <div class="form-group row">
-          <label for="formNewDes" class="col-4 col-form-label"
-            >Descripción</label
-          >
-          <div class="col-8">
-            <div class="input-group">
-              <div class="input-group-prepend">
-                <div class="input-group-text">
-                  <i class="fa fa-audio-description"></i>
-                </div>
+            <br />
+            <div class="form-group col-12">
+              <div class="row">
+                <button id="formNewCreate" class="btn btn-primary offset-3">
+                  Añadir fecha
+                </button>
               </div>
-              <input
-                id="formNewDes"
-                name="formNewDes"
-                placeholder="Introduzca descripción"
-                type="text"
-                class="form-control"
-              />
             </div>
           </div>
-        </div>
-        <div class="form-group row">
-          <div class="offset-4 col-8">
-            <button name="submit" type="submit" class="btn btn-primary">
-              Submit
-            </button>
+          <div class="col-6">
+            <ul>
+              <li>Fecha 1</li>
+              <li>Fecha 2</li>
+              <li>Fecha 3</li>
+              <li>Fecha 4</li>
+            </ul>
           </div>
         </div>
-        <!-- divs con contenido generado en js (fechas, asistentes, objetos, lugares) -->
-      </form>
+      </div>
+      <label>Introduzca objetos</label>
+      <div id="formNewObj">
+        <div class="row">
+          <div class="col-12 col-md-4">
+            <div class="form-group col-12">
+              <div class="input-group">
+                <div class="input-group-prepend">
+                  <div class="input-group-text">
+                    <i class="fa fa-dribbble"></i>
+                  </div>
+                </div>
+                <input
+                  id="formNewObjTxt"
+                  name="formNewObjTxt"
+                  placeholder="Introduzca objeto"
+                  type="text"
+                  class="form-control"
+                  required="required"
+                />
+              </div>
+            </div>
+            <div class="form-group col-12">
+              <div class="row">
+                <button id="formNewObjAdd" class="btn btn-primary offset-3">
+                  Añadir objeto
+                </button>
+              </div>
+            </div>
+          </div>
+          <div class="col-5 align-items-center">
+            <ul>
+              <li>Objeto 1</li>
+              <li>Objeto 2</li>
+              <li>Objeto 3</li>
+              <li>Objeto 4</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <label>Introduzca ubicaciones</label>
     </fieldset>
+
     <input
       id="googleMapsNew"
       class="controls form-control"
@@ -126,7 +197,33 @@
       placeholder="Search Box"
     />
     <br />
-    <div id="map" class="row col-10 col-md-6 align-items-center"></div>
+    <div id="map" class="row col-11 col-md-6 align-items-center"></div>
+    <br />
+    <fieldset class="col-11 col-md-6 align-self-center">
+      <div id="formNewPlaces">
+        <div class="form-group row">
+          <div class="offset-1">
+            <button id="formNewPlacesAdd" class="btn btn-primary col-12">
+              Añadir Lugar
+            </button>
+          </div>
+        </div>
+        <div class="col-5 align-items-center">
+          <ul>
+            <li>Lugar 1</li>
+            <li>Lugar 2</li>
+            <li>Lugar 3</li>
+            <li>Lugar 4</li>
+          </ul>
+        </div>
+      </div>
+      <br />
+      <div class="offset-4 col-4 mb-5">
+        <button id="formNewCreate" class="btn-lg btn-primary row">
+          Crear evento
+        </button>
+      </div>
+    </fieldset>
     <!-- jQuery, jQueryUI, Popper and Bootstrap -->
     <script
       src="https://code.jquery.com/jquery-3.4.1.min.js"
