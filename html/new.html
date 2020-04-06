@@ -68,7 +68,55 @@
     <div style="height: 5em;"></div>
     <fieldset id="fieldsetMaps" class="col-8 align-self-center">
       <form>
-        <!-- formulario de alta de evento -->
+        <div class="form-group row">
+          <label for="formNewName" class="col-4 col-form-label">Nombre</label>
+          <div class="col-8">
+            <div class="input-group">
+              <div class="input-group-prepend">
+                <div class="input-group-text">
+                  <i class="fa fa-angellist"></i>
+                </div>
+              </div>
+              <input
+                id="formNewName"
+                name="formNewName"
+                placeholder="Introduzca el nombre de su evento"
+                type="text"
+                class="form-control"
+                required="required"
+              />
+            </div>
+          </div>
+        </div>
+        <div class="form-group row">
+          <label for="formNewDes" class="col-4 col-form-label"
+            >Descripción</label
+          >
+          <div class="col-8">
+            <div class="input-group">
+              <div class="input-group-prepend">
+                <div class="input-group-text">
+                  <i class="fa fa-audio-description"></i>
+                </div>
+              </div>
+              <input
+                id="formNewDes"
+                name="formNewDes"
+                placeholder="Introduzca descripción"
+                type="text"
+                class="form-control"
+              />
+            </div>
+          </div>
+        </div>
+        <div class="form-group row">
+          <div class="offset-4 col-8">
+            <button name="submit" type="submit" class="btn btn-primary">
+              Submit
+            </button>
+          </div>
+        </div>
+        <!-- divs con contenido generado en js (fechas, asistentes, objetos, lugares) -->
       </form>
     </fieldset>
     <input
