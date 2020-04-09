@@ -19,6 +19,6 @@ if ($resultado) {
 	$respuesta["mensaje"] = "Usuario registrado";
 } else {
 	$respuesta["error"] = 1;
-	$respuesta["mensaje"] = "Error " . mysqli_error($db);
+	$respuesta["mensaje"] = "Error, direccion de correo ya registrada";
 }
 echo json_encode($respuesta);
