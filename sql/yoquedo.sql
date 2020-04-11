@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 06-04-2020 a las 17:49:36
+-- Tiempo de generación: 11-04-2020 a las 18:45:51
 -- Versión del servidor: 10.4.11-MariaDB
 -- Versión de PHP: 7.4.3
 
@@ -29,6 +29,8 @@ USE `yoquedo`;
 --
 -- Estructura de tabla para la tabla `evento`
 --
+-- Creación: 31-03-2020 a las 18:04:47
+--
 
 DROP TABLE IF EXISTS `evento`;
 CREATE TABLE `evento` (
@@ -36,10 +38,16 @@ CREATE TABLE `evento` (
   `nombre` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+--
+-- RELACIONES PARA LA TABLA `evento`:
+--
+
 -- --------------------------------------------------------
 
 --
 -- Estructura de tabla para la tabla `fechapropuesta`
+--
+-- Creación: 31-03-2020 a las 18:19:09
 --
 
 DROP TABLE IF EXISTS `fechapropuesta`;
@@ -49,10 +57,18 @@ CREATE TABLE `fechapropuesta` (
   `fecha` datetime NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+--
+-- RELACIONES PARA LA TABLA `fechapropuesta`:
+--   `idEvento`
+--       `evento` -> `id`
+--
+
 -- --------------------------------------------------------
 
 --
 -- Estructura de tabla para la tabla `fechavotada`
+--
+-- Creación: 31-03-2020 a las 18:32:51
 --
 
 DROP TABLE IF EXISTS `fechavotada`;
@@ -62,10 +78,20 @@ CREATE TABLE `fechavotada` (
   `emailUsuario` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+--
+-- RELACIONES PARA LA TABLA `fechavotada`:
+--   `idFechaPropuesta`
+--       `fechapropuesta` -> `idFecha`
+--   `emailUsuario`
+--       `usuario` -> `email`
+--
+
 -- --------------------------------------------------------
 
 --
 -- Estructura de tabla para la tabla `lugarpropuesto`
+--
+-- Creación: 05-04-2020 a las 16:04:10
 --
 
 DROP TABLE IF EXISTS `lugarpropuesto`;
@@ -77,10 +103,18 @@ CREATE TABLE `lugarpropuesto` (
   `lng` float NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+--
+-- RELACIONES PARA LA TABLA `lugarpropuesto`:
+--   `idEvento`
+--       `evento` -> `id`
+--
+
 -- --------------------------------------------------------
 
 --
 -- Estructura de tabla para la tabla `lugarvotado`
+--
+-- Creación: 31-03-2020 a las 18:41:11
 --
 
 DROP TABLE IF EXISTS `lugarvotado`;
@@ -90,10 +124,20 @@ CREATE TABLE `lugarvotado` (
   `emailUsuario` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+--
+-- RELACIONES PARA LA TABLA `lugarvotado`:
+--   `idLugarVotado`
+--       `lugarpropuesto` -> `idLugar`
+--   `emailUsuario`
+--       `usuario` -> `email`
+--
+
 -- --------------------------------------------------------
 
 --
 -- Estructura de tabla para la tabla `objetopropuesto`
+--
+-- Creación: 31-03-2020 a las 18:29:15
 --
 
 DROP TABLE IF EXISTS `objetopropuesto`;
@@ -103,10 +147,18 @@ CREATE TABLE `objetopropuesto` (
   `nombre` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+--
+-- RELACIONES PARA LA TABLA `objetopropuesto`:
+--   `idEvento`
+--       `evento` -> `id`
+--
+
 -- --------------------------------------------------------
 
 --
 -- Estructura de tabla para la tabla `objetousuario`
+--
+-- Creación: 31-03-2020 a las 18:42:04
 --
 
 DROP TABLE IF EXISTS `objetousuario`;
@@ -116,10 +168,20 @@ CREATE TABLE `objetousuario` (
   `emailUsuario` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+--
+-- RELACIONES PARA LA TABLA `objetousuario`:
+--   `idObjetoUsuario`
+--       `objetopropuesto` -> `idObjeto`
+--   `emailUsuario`
+--       `usuario` -> `email`
+--
+
 -- --------------------------------------------------------
 
 --
 -- Estructura de tabla para la tabla `participa`
+--
+-- Creación: 31-03-2020 a las 18:06:27
 --
 
 DROP TABLE IF EXISTS `participa`;
@@ -128,10 +190,20 @@ CREATE TABLE `participa` (
   `emailUsuario` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+--
+-- RELACIONES PARA LA TABLA `participa`:
+--   `idEvento`
+--       `evento` -> `id`
+--   `emailUsuario`
+--       `usuario` -> `email`
+--
+
 -- --------------------------------------------------------
 
 --
 -- Estructura de tabla para la tabla `usuario`
+--
+-- Creación: 31-03-2020 a las 17:59:47
 --
 
 DROP TABLE IF EXISTS `usuario`;
@@ -139,6 +211,10 @@ CREATE TABLE `usuario` (
   `email` varchar(255) NOT NULL,
   `nick` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- RELACIONES PARA LA TABLA `usuario`:
+--
 
 --
 -- Índices para tablas volcadas
