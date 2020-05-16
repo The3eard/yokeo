@@ -28,6 +28,7 @@ function compruebaUsuario() {
 function altaUserDb(user, mail) {
   console.log("hasta aqui2");
   param = "user=" + user + "&mail=" + mail;
+  event.preventDefault();
   $.post("../php/registro.php", param, respuestaAltaUser, "json");
   return false;
 }
@@ -38,10 +39,6 @@ function respuestaAltaUser(json) {
     alert(json.mensaje);
   } else {
     alert(json.mensaje);
-    // toIndex();
+    toIndex();
   }
-}
-
-function toIndex() {
-  location = "../index.html";
 }

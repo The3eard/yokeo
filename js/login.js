@@ -25,6 +25,7 @@ function respuestaLogUser(json) {
   if (json == 0) {
     alert("la dirección de email no se corresponde con ningún usuario");
   } else {
-    setCookie("user", json, 30);
+    console.log(json);
+    setCookie(json, 30);
   }
 }

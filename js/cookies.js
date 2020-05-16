@@ -1,8 +1,8 @@
-function setCookie(cname, cvalue, exdays) {
+function setCookie(cvalue, exdays) {
   var d = new Date();
   d.setTime(d.getTime() + exdays * 24 * 60 * 60 * 1000);
   var expires = "expires=" + d.toGMTString();
-  document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
+  document.cookie = "user=" + cvalue + ";" + expires;
 }
 
 function getCookie(cname) {
@@ -22,5 +22,5 @@ function getCookie(cname) {
 }
 
 function delCookie() {
-  document.cookie = "user=null";
+  document.cookie = "user=John Doe; expires=Thu, 18 Dec 2013 12:00:00 UTC";
 }
