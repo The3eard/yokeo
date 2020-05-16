@@ -16,7 +16,7 @@ $stmt->bind_param('ss', $mail, $nick);
 $resultado = $stmt->execute();
 if ($resultado) {
 	$respuesta["error"] = 0;
-	$respuesta["mensaje"] = "Usuario registrado";
+	$respuesta["mensaje"] = "Se ha registrado correctamente";
 } else {
 	$respuesta["error"] = 1;
 	$respuesta["mensaje"] = "Error, direccion de correo ya registrada";
