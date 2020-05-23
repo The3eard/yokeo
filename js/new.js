@@ -1,25 +1,25 @@
 /* Initial position */
 function initAutocomplete() {
-  var map = new google.maps.Map(document.getElementById("map"), {
+  var map = new google.maps.Map(document.getElementById('map'), {
     center: { lat: 37.389193, lng: -5.984478 },
     zoom: 12,
-    mapTypeId: "roadmap",
+    mapTypeId: 'roadmap',
   });
 
   // Create the search box and link it to the UI element.
-  var input = document.getElementById("googleMapsNew");
+  var input = document.getElementById('googleMapsNew');
   var searchBox = new google.maps.places.SearchBox(input);
   map.controls[google.maps.ControlPosition.TOP_LEFT].push(input);
 
   // Bias the SearchBox results towards current map's viewport.
-  map.addListener("bounds_changed", function () {
+  map.addListener('bounds_changed', function () {
     searchBox.setBounds(map.getBounds());
   });
 
   var markers = [];
   // Listen for the event fired when the user selects a prediction and retrieve
   // more details for that place.
-  searchBox.addListener("places_changed", function () {
+  searchBox.addListener('places_changed', function () {
     var places = searchBox.getPlaces();
 
     if (places.length == 0) {
@@ -37,7 +37,7 @@ function initAutocomplete() {
 
     places.forEach(function (place) {
       if (!place.geometry) {
-        console.log("Returned place contains no geometry");
+        console.log('Returned place contains no geometry');
         return;
       }
       var icon = {
@@ -72,21 +72,21 @@ function initAutocomplete() {
 function getLocation(dir) {
   /* hay que modificar dir para que sea una llamada a la API de GMaps, eliminamos espacios y solo dejamos las comas */
   $.get(
-    "https://maps.googleapis.com/maps/api/geocode/json?address=Sevilla,España&key=AIzaSyC0zOcrKZQiVP6Gmehtx2CQHSfpl9zIEfY",
+    'https://maps.googleapis.com/maps/api/geocode/json?address=Sevilla,España&key=AIzaSyC0zOcrKZQiVP6Gmehtx2CQHSfpl9zIEfY',
     extractLatLng,
-    "json"
+    'json'
   );
   function extractLatLng(json) {
     var data = [];
-    data["lat"] = json.results[0].geometry.location.lat;
-    data["lng"] = json.results[0].geometry.location.lng;
+    data['lat'] = json.results[0].geometry.location.lat;
+    data['lng'] = json.results[0].geometry.location.lng;
     console.log(data);
     /* Pasamos data a la funcion que cree la entrada en DB */
   }
 }
 
 $(function () {
-  $("#datepicker").datepicker({
-    formatDate: "d-MM-yy",
+  $('#datepicker').datepicker({
+    formatDate: 'd-MM-yy',
   });
 });
