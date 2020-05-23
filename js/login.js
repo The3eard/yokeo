@@ -15,17 +15,17 @@ function compruebaUsuario() {
 
 function logUser(mail) {
   param = 'mail=' + mail;
-  console.log('consulta');
   event.preventDefault();
   $.get('../php/login.php', param, respuestaLogUser, 'json');
   return false;
 }
 
 function respuestaLogUser(json) {
-  if (json == 0) {
+  if (json === 0) {
     alert('la dirección de email no se corresponde con ningún usuario');
   } else {
-    console.log(json);
     setCookie(json, 30);
+    alert('Se ha registrado correctamente');
+    toIndex();
   }
 }
