@@ -22,10 +22,10 @@ function logUser(mail) {
 
 function respuestaLogUser(json) {
   if (json === 0) {
-    alert('la dirección de email no se corresponde con ningún usuario');
+    alert('La dirección de email no se corresponde con ningún usuario');
   } else {
     setCookie(json, 30);
-    alert('Se ha registrado correctamente');
+    alert('Ha iniciado sesión correctamente');
     toIndex();
   }
 }

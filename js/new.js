@@ -85,8 +85,13 @@ function getLocation(dir) {
   }
 }
 
-$(function () {
-  $('#datepicker').datepicker({
-    formatDate: 'd-MM-yy',
-  });
+$('#datepicker').flatpickr({
+  enableTime: true,
+  altInput: true,
+  time_24hr: true,
+  dateFormat: 'Z',
+  altFormat: 'd-m-Y, H:i',
 });
+
+// document.querySelector('#datepicker').nextElementSibling.value; para la web
+// document.querySelector('#datepicker').value; para la DB
