@@ -85,12 +85,18 @@ function getLocation(dir) {
   }
 }
 
+/**
+ *
+ */
+
+flatpickr.localize(flatpickr.l10ns.es);
 $('#datepicker').flatpickr({
   enableTime: true,
   altInput: true,
   time_24hr: true,
-  dateFormat: 'Z',
-  altFormat: 'd-m-Y, H:i',
+  dateFormat: 'Y-m-d H:i:S',
+  altFormat: 'l, d \\de F \\de Y, \\a \\l\\a\\s H:i \\h\\o\\r\\a\\s',
+  parseDate: true,
 });
 
 // document.querySelector('#datepicker').nextElementSibling.value; para la web
