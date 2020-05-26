@@ -1,272 +1,280 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <title>Yokeo! organizador de eventos</title>
-    <meta charset="utf-8" />
-    <meta
-      name="viewport"
-      content="width=device-width, initial-scale=1, shrink-to-fit=no"
-    />
-
-    <!-- Bootstrap and jQueryUI -->
-    <link
-      href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
-      rel="stylesheet"
-      integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
-      crossorigin="anonymous"
-    />
-
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.css"
-      integrity="sha256-rByPlHULObEjJ6XQxW/flG2r+22R5dKiAoef+aXWfik="
-      crossorigin="anonymous"
-    />
-
-    <link
-      href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
-      rel="stylesheet"
-      integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN"
-      crossorigin="anonymous"
-    />
-
-    <
-
-    <!-- CSS -->
-    <link rel="stylesheet" href="../css/style.css" />
-    <link
-      rel="stylesheet"
-      href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css"
-    />
-    <style></style>
-  </head>
-  <body>
-    <!-- HTML -->
-
-    <!-- Nav -->
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark shadow fixed-top">
-      <div class="container">
-        <a class="navbar-brand" href="../index.html"
-          ><tagblue>yokeo</tagblue><tagpink>!</tagpink></a
-        >
-        <button
-          class="navbar-toggler"
-          type="button"
-          data-toggle="collapse"
-          data-target="#navbarResponsive"
-          aria-controls="navbarResponsive"
-          aria-expanded="false"
-          aria-label="Toggle navigation"
-        >
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarResponsive">
-          <ul class="navbar-nav ml-auto">
-            <li class="nav-item">
-              <a class="nav-link" href="../index.html">Inicio </a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link active" href="login.html">Iniciar sesión</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="registro.html">Registrarse</a>
-            </li>
-          </ul>
-        </div>
-      </div>
-    </nav>
-    <!-- Contents -->
-    <div style="height: 5em;"></div>
-    <fieldset class="col-11 col-md-6 align-self-center">
-      <span class="col-11 col-md-6"
-        ><h1 class="offset-md-4">¡Crea tu evento!</h1></span
-      >
-      <div class="form-group row">
-        <label for="formNewName" class="col-4 col-form-label"
-          ><strong>Nombre</strong></label
-        >
-        <div class="col-8">
-          <div class="input-group">
-            <div class="input-group-prepend">
-              <div class="input-group-text">
-                <i class="fa fa-angellist"></i>
-              </div>
-            </div>
-            <input
-              id="formNewName"
-              name="formNewName"
-              placeholder="Introduzca el nombre de su evento"
-              type="text"
-              class="form-control"
-              required="required"
-            />
-          </div>
-        </div>
-      </div>
-      <div class="form-group row">
-        <label for="formNewDes" class="col-4 col-form-label"
-          ><strong>Descripción</strong></label
-        >
-        <div class="col-8">
-          <div class="input-group">
-            <input
-              id="formNewDes"
-              name="formNewDes"
-              placeholder="Introduzca descripción"
-              type="text"
-              class="form-control"
-            />
-          </div>
-        </div>
-      </div>
-      <div id="formNewDate">
-        <label><strong>Introduzca fecha y hora</strong></label>
-        <div class="row">
-          <div class="col-12">
-            <div class="input-group col-12">
-              <div class="input-group-prepend">
-                <div class="input-group-text">
-                  <i class="fa fa-calendar"></i>
-                </div>
-              </div>
-              <input
-                type="text"
-                id="datepicker"
-                placeholder="Seleccione fecha y hora"
-                id="formNewDateTxt"
-                class="form-control"
-                required="required"
-              />
-            </div>
-            <br />
-            <div class="form-group col-12">
-              <div class="row justify-content-start">
-                <button id="formNewCreate" class="btn btn-primary offset-1">
-                  Añadir fecha y hora
-                </button>
-              </div>
-            </div>
-          </div>
-          <div class="col-6 offset-2">
-            <strong>Fechas propuestas</strong>
-            <ul>
-              <li>Fecha 1</li>
-              <li>Fecha 2</li>
-              <li>Fecha 3</li>
-              <li>Fecha 4</li>
-            </ul>
-          </div>
-        </div>
-      </div>
-      <label><strong>Introduzca objetos</strong></label>
-      <div id="formNewObj">
-        <div class="row">
-          <div class="col-12 col-md-5">
-            <div class="form-group col-12">
-              <div class="input-group">
-                <div class="input-group-prepend">
-                  <div class="input-group-text">
-                    <i class="fa fa-dribbble"></i>
-                  </div>
-                </div>
-                <input
-                  id="formNewObjTxt"
-                  name="formNewObjTxt"
-                  placeholder="Introduzca objeto"
-                  type="text"
-                  class="form-control"
-                  required="required"
-                />
-              </div>
-            </div>
-            <div class="form-group col-12">
-              <div class="row justify-content-start">
-                <button id="formNewObjAdd" class="btn btn-primary offset-2">
-                  Añadir objeto
-                </button>
-              </div>
-            </div>
-          </div>
-          <div class="col-5 align-items-center">
-            <strong>Objetos propuestos</strong>
-            <ul>
-              <li>Objeto 1</li>
-              <li>Objeto 2</li>
-              <li>Objeto 3</li>
-              <li>Objeto 4</li>
-            </ul>
-          </div>
-        </div>
-      </div>
-
-      <label><strong>Introduzca ubicaciones</strong></label>
-    </fieldset>
-
-    <input
-      id="googleMapsNew"
-      class="controls form-control"
-      type="text"
-      placeholder="Search Box"
-    />
-    <br />
-    <div id="map" class="row col-11 col-md-6 align-items-center"></div>
-    <br />
-    <fieldset class="col-11 col-md-6 align-self-center">
-      <div id="formNewPlaces">
-        <div class="form-group row offset-1">
-          <div class="row justify-content-start">
-            <button id="formNewPlacesAdd" class="btn btn-primary">
-              Añadir Lugar
-            </button>
-          </div>
-        </div>
-        <div class="col-5 align-items-center">
-          <strong>Ubicaciones propuestas</strong>
-          <ul>
-            <li>Lugar 1</li>
-            <li>Lugar 2</li>
-            <li>Lugar 3</li>
-            <li>Lugar 4</li>
-          </ul>
-        </div>
-      </div>
-      <br />
-      <div class="offset-4 col-4 mb-5">
-        <button id="formNewCreate" class="btn-lg btn-primary row">
-          Crear evento
-        </button>
-      </div>
-    </fieldset>
-    <!-- jQuery, jQueryUI, Popper and Bootstrap -->
-    <script
-      src="https://code.jquery.com/jquery-3.4.1.min.js"
-      integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
-      crossorigin="anonymous"
-    ></script>
-    <script
-      src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"
-      integrity="sha256-KM512VNnjElC30ehFwehXjx1YCHPiQkOPmqnrWtpccM="
-      crossorigin="anonymous"
-    ></script>
-    <script
-      src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
-      integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
-      crossorigin="anonymous"
-    ></script>
-    <script
-      src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
-      integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
-      crossorigin="anonymous"
-    ></script>
-    <script
-      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC0zOcrKZQiVP6Gmehtx2CQHSfpl9zIEfY&libraries=places&callback=initAutocomplete"
-      async
-      defer
-    ></script>
-    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
-    <script src="https://npmcdn.com/flatpickr/dist/l10n/es.js"></script>
-    <script src="../js/new.js"></script>
-    <script src="../js/index.js"></script>
-    <script></script>
-  </body>
+	<head>
+		<title>Yokeo! organizador de eventos</title>
+		<meta charset="utf-8" />
+		<meta
+			name="viewport"
+			content="width=device-width, initial-scale=1, shrink-to-fit=no"
+		/>
+		<!-- Bootstrap and jQueryUI -->
+		<link
+			href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+			rel="stylesheet"
+			integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
+			crossorigin="anonymous"
+		/>
+		<link
+			rel="stylesheet"
+			href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.css"
+			integrity="sha256-rByPlHULObEjJ6XQxW/flG2r+22R5dKiAoef+aXWfik="
+			crossorigin="anonymous"
+		/>
+		<link
+			href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
+			rel="stylesheet"
+			integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN"
+			crossorigin="anonymous"
+		/>
+		<
+		<!-- CSS -->
+		<link rel="stylesheet" href="../css/style.css" />
+		<link
+			rel="stylesheet"
+			href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css"
+		/>
+		<style>
+			#formNewDateDiv,
+			#formNewObjDiv,
+			.mapAcc {
+				display: none;
+			}
+		</style>
+	</head>
+	<body>
+		<!-- HTML -->
+		<!-- Nav -->
+		<nav class="navbar navbar-expand-lg navbar-dark bg-dark shadow fixed-top">
+			<div class="container">
+				<a class="navbar-brand" href="../index.html">
+					<tagblue>yokeo</tagblue>
+					<tagpink>!</tagpink>
+				</a>
+				<button
+					class="navbar-toggler"
+					type="button"
+					data-toggle="collapse"
+					data-target="#navbarResponsive"
+					aria-controls="navbarResponsive"
+					aria-expanded="false"
+					aria-label="Toggle navigation"
+				>
+					<span class="navbar-toggler-icon"></span>
+				</button>
+				<div class="collapse navbar-collapse" id="navbarResponsive">
+					<ul class="navbar-nav ml-auto">
+						<li class="nav-item">
+							<a class="nav-link" href="../index.html">Inicio </a>
+						</li>
+						<li class="nav-item">
+							<a class="nav-link active" href="login.html">Iniciar sesión</a>
+						</li>
+						<li class="nav-item">
+							<a class="nav-link" href="registro.html">Registrarse</a>
+						</li>
+					</ul>
+				</div>
+			</div>
+		</nav>
+		<!-- Contents -->
+		<div style="height: 5em;"></div>
+		<fieldset class="col-11 col-md-6 align-self-center">
+			<span class="col-11 col-md-6">
+				<h1 class="offset-md-4">¡Crea tu evento!</h1>
+			</span>
+			<div id="formNewNameDiv" class="form-group row">
+				<label for="formNewName" class="col-4 col-form-label"
+					><strong>Nombre</strong></label
+				>
+				<div class="col-8 mb-3">
+					<div class="input-group">
+						<div class="input-group-prepend">
+							<div class="input-group-text">
+								<i class="fa fa-angellist"></i>
+							</div>
+						</div>
+						<input
+							id="formNewName"
+							name="formNewName"
+							placeholder="Introduzca el nombre de su evento"
+							type="text"
+							class="form-control"
+							required="required"
+						/>
+					</div>
+				</div>
+				<label for="formNewDes" class="col-4 col-form-label"
+					><strong>Descripción</strong></label
+				>
+				<div class="col-8">
+					<div class="input-group">
+						<input
+							id="formNewDes"
+							name="formNewDes"
+							placeholder="Introduzca descripción"
+							type="text"
+							class="form-control"
+						/>
+					</div>
+					<div class="col-8 row justify-content-center mt-3">
+						<button id="nameNextButton" class="btn btn-primary row">
+							Siguiente
+						</button>
+					</div>
+				</div>
+			</div>
+			<div id="formNewDateDiv" class="col-12">
+				<label><strong>Introduzca fecha y hora</strong></label>
+				<div class="col-12">
+					<div class="input-group col-12">
+						<div class="input-group-prepend">
+							<div class="input-group-text col-12">
+								<i class="fa fa-calendar"></i>
+							</div>
+						</div>
+						<input
+							type="text"
+							id="datepicker"
+							placeholder="Seleccione fecha y hora"
+							id="formNewDateTxt"
+							class="form-control col-12"
+							required="required"
+						/>
+					</div>
+					<br />
+					<div class="col-12">
+						<div class="row justify-content-start">
+							<button id="formNewCreate" class="btn btn-primary offset-1 mb-3">
+								Añadir fecha y hora
+							</button>
+						</div>
+					</div>
+					<div class="col-6 offset-1">
+						<strong>Fechas propuestas</strong>
+						<ul>
+							<li>Fecha 1</li>
+							<li>Fecha 2</li>
+							<li>Fecha 3</li>
+							<li>Fecha 4</li>
+						</ul>
+					</div>
+				</div>
+				<div class="col-12 row justify-content-center mt-3">
+					<button id="dateNextButton" class="btn btn-primary row">
+						Siguiente
+					</button>
+				</div>
+			</div>
+			<div id="formNewObjDiv">
+				<label><strong>Introduzca objetos</strong></label>
+				<div class="row">
+					<div class="col-12 col-md-5">
+						<div class="form-group col-12">
+							<div class="input-group">
+								<div class="input-group-prepend">
+									<div class="input-group-text">
+										<i class="fa fa-dribbble"></i>
+									</div>
+								</div>
+								<input
+									id="formNewObjTxt"
+									name="formNewObjTxt"
+									placeholder="Introduzca objeto"
+									type="text"
+									class="form-control"
+									required="required"
+								/>
+							</div>
+						</div>
+						<div class="form-group col-12">
+							<div class="row justify-content-start">
+								<button id="objNewObjAdd" class="btn btn-primary offset-2">
+									Añadir objeto
+								</button>
+							</div>
+						</div>
+					</div>
+					<div class="col-5 align-items-center">
+						<strong>Objetos propuestos</strong>
+						<ul>
+							<li>Objeto 1</li>
+							<li>Objeto 2</li>
+							<li>Objeto 3</li>
+							<li>Objeto 4</li>
+						</ul>
+					</div>
+				</div>
+			</div>
+		</fieldset>
+		<label class="offset-3 mapAcc"
+			><strong>&nbsp; &nbsp; Introduzca ubicación</strong></label
+		>
+		<input
+			id="googleMapsNew"
+			class="controls form-control mapAcc"
+			type="text"
+			placeholder="Search Box"
+		/>
+		<br />
+		<div id="map" class="row col-11 col-md-6 align-items-center mapAcc"></div>
+		<br />
+		<fieldset class="col-11 col-md-6 align-self-center">
+			<div id="formNewPlaces">
+				<div class="form-group row offset-1">
+					<div class="row justify-content-start">
+						<button id="formNewPlacesAdd" class="btn btn-primary mapAcc">
+							Añadir Lugar
+						</button>
+					</div>
+				</div>
+				<div id="formLugaresDiv" class="col-5 align-items-center mapAcc">
+					<strong>Ubicaciones propuestas</strong>
+					<ul>
+						<li>Lugar 1</li>
+						<li>Lugar 2</li>
+						<li>Lugar 3</li>
+						<li>Lugar 4</li>
+					</ul>
+				</div>
+			</div>
+		</fieldset>
+		<div
+			id="creareventoButton"
+			class="col-12 mb-5 row justify-content-center mapAcc"
+		>
+			<button id="formNewCreate" class="btn-lg btn-primary row">
+				Crear evento
+			</button>
+		</div>
+		<!-- jQuery, jQueryUI, Popper and Bootstrap -->
+		<script
+			src="https://code.jquery.com/jquery-3.4.1.min.js"
+			integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+			crossorigin="anonymous"
+		></script>
+		<script
+			src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"
+			integrity="sha256-KM512VNnjElC30ehFwehXjx1YCHPiQkOPmqnrWtpccM="
+			crossorigin="anonymous"
+		></script>
+		<script
+			src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+			integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+			crossorigin="anonymous"
+		></script>
+		<script
+			src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+			integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+			crossorigin="anonymous"
+		></script>
+		<script
+			src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC0zOcrKZQiVP6Gmehtx2CQHSfpl9zIEfY&libraries=places&callback=initAutocomplete"
+			async
+			defer
+		></script>
+		<script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+		<script src="https://npmcdn.com/flatpickr/dist/l10n/es.js"></script>
+		<script src="../js/new.js"></script>
+		<script src="../js/index.js"></script>
+	</body>
 </html>

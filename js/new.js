@@ -68,25 +68,28 @@ function initAutocomplete() {
   });
 }
 
-/* Datos de lugar par aguardar */
+/* Datos de lugar para aguardar */
 function getLocation(dir) {
-  /* hay que modificar dir para que sea una llamada a la API de GMaps, eliminamos espacios y solo dejamos las comas */
   $.get(
-    'https://maps.googleapis.com/maps/api/geocode/json?address=Sevilla,España&key=AIzaSyC0zOcrKZQiVP6Gmehtx2CQHSfpl9zIEfY',
+    'https://maps.googleapis.com/maps/api/geocode/json?address=' +
+      dir +
+      '&key=AIzaSyC0zOcrKZQiVP6Gmehtx2CQHSfpl9zIEfY',
     extractLatLng,
     'json'
   );
   function extractLatLng(json) {
-    var data = [];
-    data['lat'] = json.results[0].geometry.location.lat;
-    data['lng'] = json.results[0].geometry.location.lng;
-    console.log(data);
-    /* Pasamos data a la funcion que cree la entrada en DB */
+    let lat = json.results[0].geometry.location.lat;
+    let lng = json.results[0].geometry.location.lng;
+    let name = json.results[0].formatted_address;
+    console.log(name + ', lat: ' + lat + ', lng: ' + lng);
+    /**
+     * Pasamos data a la funcion que cree la entrada en DB
+     */
   }
 }
 
 /**
- *
+ * DateTimePicker insert y config
  */
 
 flatpickr.localize(flatpickr.l10ns.es);
@@ -97,7 +100,9 @@ $('#datepicker').flatpickr({
   dateFormat: 'Y-m-d H:i:S',
   altFormat: 'l, d \\de F \\de Y, \\a \\l\\a\\s H:i \\h\\o\\r\\a\\s',
   parseDate: true,
+  /**
+   * Acceso a datos
+   * document.querySelector('#datepicker').nextElementSibling.value; para la web
+   * document.querySelector('#datepicker').value; para la DB
+   */
 });
-
-// document.querySelector('#datepicker').nextElementSibling.value; para la web
-// document.querySelector('#datepicker').value; para la DB
