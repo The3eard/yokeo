@@ -1,5 +1,14 @@
+navbar();
+
+document.querySelector("#logOutBtn").addEventListener("click", logOut);
+
 function toIndex() {
-	location = "../index.html";
+	// ! Cambiar condición del if cuando esté colgado en el servidor
+	if (window.location.pathname === "/yokeo/index.html") {
+		location = "index.html";
+	} else {
+		location = "../index.html";
+	}
 }
 
 function setCookie(cname, cvalue, exdays) {
@@ -26,4 +35,23 @@ function getCookie(cname) {
 
 function delCookie() {
 	setCookie("user", "", 1);
+}
+
+function navbar() {
+	let wLog = document.querySelectorAll(".wLog");
+	let woLog = document.querySelectorAll(".woLog");
+	if (getCookie("user") === "") {
+		wLog.forEach((element) => (element.style.display = "none"));
+		woLog.forEach((element) => (element.style.display = "block"));
+		console.log("sin login");
+	} else {
+		wLog.forEach((element) => (element.style.display = "block"));
+		woLog.forEach((element) => (element.style.display = "none"));
+		console.log("con login");
+	}
+}
+
+function logOut() {
+	delCookie();
+	toIndex();
 }
