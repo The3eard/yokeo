@@ -70,9 +70,7 @@
 							<a class="nav-link woLog" href="./login.html">Iniciar sesión</a>
 						</li>
 						<li class="nav-item woLog">
-							<a class="nav-link woLog" href="./registro.html"
-								>Registrarse</a
-							>
+							<a class="nav-link woLog" href="./registro.html">Registrarse</a>
 						</li>
 						<li class="nav-item dropdown wLog">
 							<a
@@ -125,24 +123,10 @@
 						/>
 					</div>
 				</div>
-				<label for="formNewDes" class="col-4 col-form-label"
-					><strong>Descripción</strong></label
-				>
-				<div class="col-8">
-					<div class="input-group">
-						<input
-							id="formNewDes"
-							name="formNewDes"
-							placeholder="Introduzca descripción"
-							type="text"
-							class="form-control"
-						/>
-					</div>
-					<div class="col-8 row justify-content-center mt-3">
-						<button id="nameNextButton" class="btn btn-primary row">
-							Siguiente
-						</button>
-					</div>
+				<div class="col-12 row justify-content-center mt-3">
+					<button id="nameNextButton" class="btn btn-primary row">
+						Siguiente
+					</button>
 				</div>
 			</div>
 			<div id="formNewDateDiv" class="col-12">
@@ -164,21 +148,16 @@
 						/>
 					</div>
 					<br />
-					<div class="col-12">
-						<div class="row justify-content-start">
+					<div class="row col-12">
+						<div class="row justify-content-start col-12">
 							<button id="formNewCreate" class="btn btn-primary offset-1 mb-3">
 								Añadir fecha y hora
 							</button>
 						</div>
 					</div>
-					<div class="col-6 offset-1">
+					<div class="col-11 offset-1">
 						<strong>Fechas propuestas</strong>
-						<ul>
-							<li>Fecha 1</li>
-							<li>Fecha 2</li>
-							<li>Fecha 3</li>
-							<li>Fecha 4</li>
-						</ul>
+						<ul id="dateList" class="col-12"></ul>
 					</div>
 				</div>
 				<div class="col-12 row justify-content-center mt-3">

@@ -1,8 +1,7 @@
 <?php
-$servidor = "localhost";
-$basedatos = "yoquedo";
-$usuario = "root";
-$password = "";
+
+require('./conn.php');
+
 $nick = $_POST['user'];
 $mail = $_POST['mail'];
 $db = new mysqli($servidor, $usuario, $password, $basedatos);
