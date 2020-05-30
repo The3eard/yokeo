@@ -169,9 +169,9 @@
 			<div id="formNewObjDiv">
 				<label><strong>Introduzca objetos</strong></label>
 				<div class="row">
-					<div class="col-12 col-md-5">
+					<div class="col-12 col-md-8">
 						<div class="form-group col-12">
-							<div class="input-group">
+							<div class="input-group col-12">
 								<div class="input-group-prepend">
 									<div class="input-group-text">
 										<i class="fa fa-dribbble"></i>
@@ -195,15 +195,15 @@
 							</div>
 						</div>
 					</div>
-					<div class="col-5 align-items-center">
+					<div class="col-5 offset-2 align-items-center">
 						<strong>Objetos propuestos</strong>
-						<ul>
-							<li>Objeto 1</li>
-							<li>Objeto 2</li>
-							<li>Objeto 3</li>
-							<li>Objeto 4</li>
-						</ul>
+						<ul id="objList"></ul>
 					</div>
+				</div>
+				<div class="col-12 row justify-content-center mt-3">
+					<button id="objNextButton" class="btn btn-primary row">
+						Siguiente
+					</button>
 				</div>
 			</div>
 		</fieldset>
@@ -228,9 +228,9 @@
 						</button>
 					</div>
 				</div>
-				<div id="formLugaresDiv" class="col-5 align-items-center formMap">
+				<div id="formLugaresDiv" class="align-items-center formMap offset-2">
 					<strong>Ubicaciones propuestas</strong>
-					<ul>
+					<ul id="placesList">
 						<li>Lugar 1</li>
 						<li>Lugar 2</li>
 						<li>Lugar 3</li>
@@ -239,12 +239,12 @@
 				</div>
 			</div>
 		</fieldset>
-		<div
-			id="creareventoButton"
-			class="col-12 mb-5 row justify-content-center formMap"
-		>
-			<button id="formNewCreate" class="btn-lg btn-primary row">
-				Crear evento
+		<div class="col-12 row justify-content-center mt-3 formMap">
+			<button
+				id="finishQuantumatic"
+				class="btn btn-lg btn-primary btn-block col-6 offset-3 my-4"
+			>
+				Finalizar
 			</button>
 		</div>
 		<!-- jQuery, jQueryUI, Popper and Bootstrap -->

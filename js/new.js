@@ -81,6 +81,7 @@ function getLocation(dir) {
 		let lat = json.results[0].geometry.location.lat;
 		let lng = json.results[0].geometry.location.lng;
 		let name = json.results[0].formatted_address;
+		console.log(name + ', ' + lat + ', ' + lng);
 		/**
 		 * Pasamos data a la funcion que cree la entrada en DB
 		 */
@@ -99,11 +100,6 @@ $('#datepicker').flatpickr({
 	dateFormat: 'Y-m-d H:i:S',
 	altFormat: 'l, d \\de F \\de Y, \\a \\l\\a\\s H:i \\h\\o\\r\\a\\s',
 	parseDate: true,
-	/**
-	 * Acceso a datos
-	 * document.querySelector('#datepicker').nextElementSibling.value; para la web
-	 * document.querySelector('#datepicker').value; para la DB
-	 */
 });
 
 /* Creación de evento - nombre */
@@ -142,7 +138,8 @@ function responseId(json) {
 }
 
 /* Creación de evento - fecha y hora */
-var date = 0;
+var dates = 0;
+
 document.querySelector('#formNewCreate').addEventListener('click', addDate);
 
 function addDate() {
@@ -150,34 +147,74 @@ function addDate() {
 	if (toDb === '') {
 		alert('Introduzca fecha');
 	} else {
-		date++;
-		let toDom = document.querySelector('#datepicker').nextElementSibling.value;
-		let ul = document.querySelector('#dateList');
-		let li = document.createElement('li');
-		li.appendChild(document.createTextNode(toDom));
-		ul.appendChild(li);
-		event.preventDefault();
-		let param = 'id=' + getId() + '&date=' + toDb;
-		console.log('yo men	');
-		$.post('../php/addDate.php', param, check, 'json');
+		let today = new Date();
+		let DD = String(today.getDate()).padStart(2, '0');
+		let MM = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
+		let YYYY = today.getFullYear();
+		let HH = today.getHours();
+		let mm = today.getMinutes();
+		today = YYYY + '-' + MM + '-' + DD + ' ' + HH + ':' + mm;
+		if (today < toDb) {
+			dates++;
+			let toDom = document.querySelector('#datepicker').nextElementSibling
+				.value;
+			let ul = document.querySelector('#dateList');
+			let li = document.createElement('li');
+			li.appendChild(document.createTextNode(toDom));
+			ul.appendChild(li);
+			event.preventDefault();
+			let param = 'id=' + getId() + '&date=' + toDb;
+			$.post('../php/addDate.php', param, check, 'json');
+		} else {
+			alert('Añada una fecha válida');
+		}
 	}
 }
 
 document.querySelector('#dateNextButton').addEventListener('click', finishDate);
 
 function finishDate() {
-	if (date === 0) {
+	if (dates === 0) {
 		alert('Introduzca una fecha para poder continuar');
 	} else {
 		next('#formNewDateDiv', '#formNewObjDiv');
 	}
 }
+/* Creación de evento - Objetos */
 
+document.querySelector('#objNewObjAdd').addEventListener('click', addObj);
+
+function addObj() {
+	let obj = document.querySelector('#formNewObjTxt').value;
+	if (obj === '') {
+		alert('Introduzca objeto');
+	} else {
+		let ul = document.querySelector('#objList');
+		let li = document.createElement('li');
+		li.appendChild(document.createTextNode(obj));
+		ul.appendChild(li);
+		event.preventDefault();
+		console.log(obj);
+		let param = 'id=' + getId() + '&obj=' + obj;
+		$.post('../php/addObj.php', param, check, 'json');
+	}
+}
+
+document.querySelector('#objNextButton').addEventListener('click', finishObj);
+
+function finishObj() {
+	next('#formNewObjDiv', '.formMap');
+}
+
+/* Funciones comunes */
 function next(currentDiv, nextDiv) {
-	let current = document.querySelector(currentDiv);
-	let next = document.querySelector(nextDiv);
-	current.style.display = 'none';
-	next.style.display = 'block';
+	let current = document.querySelectorAll(currentDiv);
+	let next = document.querySelectorAll(nextDiv);
+	current.forEach(element => (element.style.display = 'none'));
+	next.forEach(element => (element.style.display = 'block'));
+
+	/* current.style.display = 'none';
+	next.style.display = 'block'; */
 }
 
 function check(json) {
