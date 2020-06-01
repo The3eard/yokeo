@@ -12,14 +12,32 @@ function onInit() {
 }
 
 function createEventDiv(json) {
-	console.log(json);
-	json.forEach(event => {
-		console.log(event);
-		// addEventToIndex(event.nombre, event.fecha, event.lugar, event.asistentes);
-	});
+	let today = new Date();
+	let DD = String(today.getDate()).padStart(2, '0');
+	let MM = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
+	let YYYY = today.getFullYear();
+	let HH = today.getHours();
+	let mm = today.getMinutes();
+	today = YYYY + '-' + MM + '-' + DD + ' ' + HH + ':' + mm;
+	for (let element in json) {
+		if (json[element]['date'] < today) {
+		} else {
+			addEventToIndex(
+				json[element]['nombre'],
+				json[element]['fecha'],
+				json[element]['lugar'],
+				json[element]['asistentes'],
+				json[element]['id']
+			);
+		}
+	}
 }
 
-function addEventToIndex(name, date, place, people) {
+function goToEvent(id) {
+	window.location.replace('../../yokeo/html/event.html?id=' + id);
+}
+
+function addEventToIndex(name, date, place, people, id) {
 	let global = document.querySelector('#myEvents');
 	let divCard = document.createElement('div');
 	divCard.classList.add('card');
@@ -27,6 +45,7 @@ function addEventToIndex(name, date, place, people) {
 	divCard.classList.add('border-info');
 	divCard.classList.add('col-md-8');
 	divCard.classList.add('col-12');
+	divCard.classList.add('mb-2');
 	let divContent = document.createElement('div');
 	divContent.classList.add('card-body');
 	let tittle = document.createElement('h4');
@@ -47,8 +66,8 @@ function addEventToIndex(name, date, place, people) {
 	button.classList.add('btn');
 	button.classList.add('float-right');
 	button.classList.add('btn-primary');
-	button.setAttribute('id', 'evento' + '123');
-	button.setAttribute('onclick', 'goToEvent(' + '123' + ')');
+	button.setAttribute('id', 'evento' + id);
+	button.setAttribute('onclick', 'goToEvent(' + id + ')');
 	divContent.appendChild(tittle);
 	divContent.appendChild(fecha);
 	divContent.appendChild(lugar);
