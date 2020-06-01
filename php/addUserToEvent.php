@@ -20,9 +20,11 @@ $stmt = $db->prepare(
 );
 $stmt->bind_param('is', $event, $user);
 $resultado = $stmt->execute();
+$last_id = $db->insert_id;
 if ($resultado) {
 	$respuesta['error'] = 0;
-	$respuesta['mensaje'] = "Usuario $user añadido a evento $event";
+	$respuesta['mensaje'] = 'OK';
+	$respuesta['id'] = $last_id;
 } else {
 	$respuesta['error'] = 1;
 	$respuesta['mensaje'] = 'Error';

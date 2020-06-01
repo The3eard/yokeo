@@ -20,9 +20,11 @@ $stmt = $db->prepare(
 );
 $stmt->bind_param('ss', $id, $obj);
 $resultado = $stmt->execute();
+$last_id = $db->insert_id;
 if ($resultado) {
 	$respuesta['error'] = 0;
-	$respuesta['mensaje'] = 'Objeto añadida';
+	$respuesta['mensaje'] = 'OK';
+	$respuesta['id'] = $last_id;
 } else {
 	$respuesta['error'] = 1;
 	$respuesta['mensaje'] = 'Error';

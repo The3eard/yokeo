@@ -49,6 +49,10 @@ function navbar() {
 	}
 }
 
+function getUser() {
+	return getCookie('user');
+}
+
 function logOut() {
 	delCookie();
 	toIndex();

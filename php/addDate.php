@@ -4,6 +4,7 @@ require './conn.php';
 
 $id = $_POST['id'];
 $date = $_POST['date'];
+$mostrar = $_POST['mostrar'];
 
 $db = new mysqli($servidor, $usuario, $password, $basedatos);
 if ($db->connect_error) {
@@ -16,13 +17,15 @@ if ($db->connect_error) {
 }
 mysqli_set_charset($db, 'utf8');
 $stmt = $db->prepare(
-	'INSERT INTO fechapropuesta(idEvento, fecha) VALUES (?,?)'
+	'INSERT INTO fechapropuesta(idEvento, fecha, mostrar) VALUES (?,?,?)'
 );
-$stmt->bind_param('ss', $id, $date);
+$stmt->bind_param('sss', $id, $date, $mostrar);
 $resultado = $stmt->execute();
+$last_id = $db->insert_id;
 if ($resultado) {
 	$respuesta['error'] = 0;
-	$respuesta['mensaje'] = 'Fecha añadida';
+	$respuesta['mensaje'] = 'OK';
+	$respuesta['id'] = $last_id;
 } else {
 	$respuesta['error'] = 1;
 	$respuesta['mensaje'] = 'Error';

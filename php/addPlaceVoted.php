@@ -2,7 +2,8 @@
 
 require './conn.php';
 
-$name = $_POST['name'];
+$id = $_POST['id'];
+$user = $_POST['user'];
 
 $db = new mysqli($servidor, $usuario, $password, $basedatos);
 if ($db->connect_error) {
@@ -14,10 +15,11 @@ if ($db->connect_error) {
 	);
 }
 mysqli_set_charset($db, 'utf8');
-$stmt = $db->prepare('INSERT INTO evento(nombre) VALUES (?)');
-$stmt->bind_param('s', $name);
+$stmt = $db->prepare(
+	'INSERT INTO lugarvotado(idLugarPropuesto, emailUsuario) VALUES (?,?)'
+);
+$stmt->bind_param('ss', $id, $user);
 $resultado = $stmt->execute();
-$last_id = $db->insert_id;
 $last_id = $db->insert_id;
 if ($resultado) {
 	$respuesta['error'] = 0;

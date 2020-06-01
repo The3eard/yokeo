@@ -68,26 +68,6 @@ function initAutocomplete() {
 	});
 }
 
-/* Datos de lugar para aguardar */
-function getLocation(dir) {
-	$.get(
-		'https://maps.googleapis.com/maps/api/geocode/json?address=' +
-			dir +
-			'&key=AIzaSyC0zOcrKZQiVP6Gmehtx2CQHSfpl9zIEfY',
-		extractLatLng,
-		'json'
-	);
-	function extractLatLng(json) {
-		let lat = json.results[0].geometry.location.lat;
-		let lng = json.results[0].geometry.location.lng;
-		let name = json.results[0].formatted_address;
-		console.log(name + ', ' + lat + ', ' + lng);
-		/**
-		 * Pasamos data a la funcion que cree la entrada en DB
-		 */
-	}
-}
-
 /**
  * DateTimePicker insert y config
  */
@@ -140,7 +120,7 @@ function responseId(json) {
 /* Creación de evento - fecha y hora */
 var dates = 0;
 
-document.querySelector('#formNewCreate').addEventListener('click', addDate);
+document.querySelector('#dateNextButton').addEventListener('click', addDate);
 
 function addDate() {
 	let toDb = document.querySelector('#datepicker').value;
@@ -158,22 +138,23 @@ function addDate() {
 			dates++;
 			let toDom = document.querySelector('#datepicker').nextElementSibling
 				.value;
-			let ul = document.querySelector('#dateList');
-			let li = document.createElement('li');
-			li.appendChild(document.createTextNode(toDom));
-			ul.appendChild(li);
 			event.preventDefault();
-			let param = 'id=' + getId() + '&date=' + toDb;
-			$.post('../php/addDate.php', param, check, 'json');
+			let param = 'id=' + getId() + '&date=' + toDb + '&mostrar=' + toDom;
+			$.post('../php/addDate.php', param, voteDate, 'json');
 		} else {
 			alert('Añada una fecha válida');
 		}
 	}
 }
 
-document.querySelector('#dateNextButton').addEventListener('click', finishDate);
+function voteDate(json) {
+	check(json);
+	let param = 'id=' + json.id + '&user=' + getUser();
+	$.post('../php/addDateVoted.php', param, finishDate, 'json');
+}
 
-function finishDate() {
+function finishDate(json) {
+	check(json);
 	if (dates === 0) {
 		alert('Introduzca una fecha para poder continuar');
 	} else {
@@ -182,28 +163,82 @@ function finishDate() {
 }
 /* Creación de evento - Objetos */
 
-document.querySelector('#objNewObjAdd').addEventListener('click', addObj);
+document.querySelector('#objNextButton').addEventListener('click', addObj);
 
 function addObj() {
 	let obj = document.querySelector('#formNewObjTxt').value;
 	if (obj === '') {
-		alert('Introduzca objeto');
+		finishObj(0);
 	} else {
-		let ul = document.querySelector('#objList');
-		let li = document.createElement('li');
-		li.appendChild(document.createTextNode(obj));
-		ul.appendChild(li);
 		event.preventDefault();
-		console.log(obj);
 		let param = 'id=' + getId() + '&obj=' + obj;
-		$.post('../php/addObj.php', param, check, 'json');
+		document.querySelector('#formNewObjTxt').value = '';
+		$.post('../php/addObj.php', param, voteObj, 'json');
 	}
+}
+
+function voteObj(json) {
+	check(json);
+	let param = 'id=' + json.id + '&user=' + getUser();
+	$.post('../php/addObjVoted.php', param, finishObj, 'json');
 }
 
 document.querySelector('#objNextButton').addEventListener('click', finishObj);
 
-function finishObj() {
+function finishObj(json) {
+	if (json === 0) {
+	} else {
+		check(json);
+	}
 	next('#formNewObjDiv', '.formMap');
+}
+
+/* Creación de evento - Lugar */
+document
+	.querySelector('#finishQuantumatic')
+	.addEventListener('click', getLocation);
+var places = 0;
+
+function getLocation() {
+	let dir = document.querySelector('#googleMapsNew').value;
+	if (dir === '') {
+		alert('Introduzca Lugar');
+	} else {
+		$.get(
+			'https://maps.googleapis.com/maps/api/geocode/json?address=' +
+				dir +
+				'&key=AIzaSyC0zOcrKZQiVP6Gmehtx2CQHSfpl9zIEfY',
+			addPlace,
+			'json'
+		);
+	}
+}
+
+function addPlace(json) {
+	places++;
+	let lat = json.results[0].geometry.location.lat;
+	let lng = json.results[0].geometry.location.lng;
+	let name = json.results[0].formatted_address;
+	event.preventDefault();
+	console.log(lat + lng + name);
+	let param = 'id=' + getId() + '&name=' + name + '&lat=' + lat + '&lng=' + lng;
+	$.post('../php/addPlace.php', param, votePlace, 'json');
+}
+
+function votePlace(json) {
+	check(json);
+	let param = 'id=' + json.id + '&user=' + getUser();
+	$.post('../php/addPlaceVoted.php', param, finishPlaces, 'json');
+}
+
+function finishPlaces() {
+	if (places === 0) {
+		event.preventDefault();
+		alert('Debe añadir una localización');
+	} else {
+		alert('Ha creado su evento correctamente');
+		toIndex();
+	}
 }
 
 /* Funciones comunes */
@@ -212,9 +247,6 @@ function next(currentDiv, nextDiv) {
 	let next = document.querySelectorAll(nextDiv);
 	current.forEach(element => (element.style.display = 'none'));
 	next.forEach(element => (element.style.display = 'block'));
-
-	/* current.style.display = 'none';
-	next.style.display = 'block'; */
 }
 
 function check(json) {

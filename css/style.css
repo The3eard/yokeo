@@ -1,149 +1,159 @@
 /* Paleta de colores */
 
 .yklightblue {
-  color: #dae5e6;
+	color: #dae5e6;
 }
 
 .ykblue {
-  color: #16aabd;
+	color: #16aabd;
 }
 
 .ykpink {
-  color: #f43086;
+	color: #f43086;
 }
 
 .yklime {
-  color: #b6ce76;
+	color: #b6ce76;
 }
 
 .ykgrey {
-  color: #bfbfbf;
+	color: #bfbfbf;
 }
 
 body {
-  background-color: #dae5e6;
+	background-color: #dae5e6;
 }
 
 .landing {
-  height: 100vh;
-  min-height: 500px;
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
+	height: 100vh;
+	min-height: 500px;
+	background-size: cover;
+	background-position: center;
+	background-repeat: no-repeat;
 }
 
 .bg-dark {
-  background-color: #304e52 !important;
+	background-color: #304e52 !important;
 }
 
 .nav-link:hover {
-  color: #16aabd !important;
+	color: #16aabd !important;
 }
 
 tagblue {
-  color: #16aabd;
+	color: #16aabd;
 }
 
 tagpink {
-  color: #f43086;
+	color: #f43086;
 }
 
 /* Always set the map height explicitly to define the size of the div element that contains the map. */
 
 #map {
-  height: 30%;
-  margin: 0 auto;
-  padding: 0;
+	height: 30%;
+	margin: 0 auto;
+	padding: 0;
 }
 
 /* Optional: Makes the sample page fill the window. */
 
 html,
 body {
-  height: 100%;
-  margin: 0;
-  padding: 0;
-  overflow-x: hidden !important;
+	height: 100%;
+	margin: 0;
+	padding: 0;
+	overflow-x: hidden !important;
 }
 
 #description {
-  font-family: Roboto;
-  font-size: 15px;
-  font-weight: 300;
+	font-family: Roboto;
+	font-size: 15px;
+	font-weight: 300;
 }
 
 #infowindow-content .title {
-  font-weight: bold;
+	font-weight: bold;
 }
 
 #infowindow-content {
-  display: none;
+	display: none;
 }
 
 #map #infowindow-content {
-  display: inline;
+	display: inline;
 }
 
 .pac-card {
-  margin: 10px 10px 0 0;
-  border-radius: 2px 0 0 2px;
-  box-sizing: border-box;
-  -moz-box-sizing: border-box;
-  outline: none;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
-  background-color: #fff;
-  font-family: Roboto;
+	margin: 10px 10px 0 0;
+	border-radius: 2px 0 0 2px;
+	box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	outline: none;
+	box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+	background-color: #fff;
+	font-family: Roboto;
 }
 
 #pac-container {
-  padding-bottom: 12px;
-  margin-right: 12px;
+	padding-bottom: 12px;
+	margin-right: 12px;
 }
 
 .pac-controls {
-  display: inline-block;
-  padding: 5px 11px;
+	display: inline-block;
+	padding: 5px 11px;
 }
 
 .pac-controls label {
-  font-family: Roboto;
-  font-size: 13px;
-  font-weight: 300;
+	font-family: Roboto;
+	font-size: 13px;
+	font-weight: 300;
 }
 
 #googleMapsNew {
-  background-color: #fff;
-  font-family: Roboto;
-  font-size: 15px;
-  font-weight: 300;
-  margin-left: 12px;
-  padding: 0 11px 0 13px;
-  text-overflow: ellipsis;
-  width: 400px;
-  margin-top: 1em;
+	background-color: #fff;
+	font-family: Roboto;
+	font-size: 15px;
+	font-weight: 300;
+	margin-left: 12px;
+	padding: 0 11px 0 13px;
+	text-overflow: ellipsis;
+	width: 400px;
+	margin-top: 1em;
 }
 
 #googleMapsNew:focus {
-  border-color: #4d90fe;
+	border-color: #4d90fe;
 }
 
 #title {
-  color: #fff;
-  background-color: #4d90fe;
-  font-size: 25px;
-  font-weight: 500;
-  padding: 6px 12px;
+	color: #fff;
+	background-color: #4d90fe;
+	font-size: 25px;
+	font-weight: 500;
+	padding: 6px 12px;
 }
 
 #target {
-  width: 345px;
+	width: 345px;
 }
 
 fieldset {
-  margin: 0 auto !important;
+	margin: 0 auto !important;
 }
 
 .formNewPlacesAdd {
-  position: relative !important;
-  margin: 0 auto !important;
+	position: relative !important;
+	margin: 0 auto !important;
+}
+
+.border-info {
+	border-color: #16aabd !important;
+}
+
+.btn-primary {
+	color: #fff;
+	background-color: #16aabd;
+	border-color: #16aabd;
 }
