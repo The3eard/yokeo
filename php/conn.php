@@ -1,8 +1,8 @@
 <?php
-/* $servidor = "localhost";
-$basedatos = "id13823363_yokeo";
-$usuario = "id13823363_useryokeo";
-$password = "B]y_5-4Uz*cmwsNq"; */
+/* $servidor = "sql105.epizy.com";
+$basedatos = "epiz_25916451_yokeo";
+$usuario = "epiz_25916451";
+$password = "The3eard"; */
 
 $servidor = 'localhost';
 $basedatos = 'yoquedo';
