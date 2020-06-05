@@ -150,7 +150,7 @@ function checkThis(json) {
 		location.reload();
 	} else {
 		alert(
-			'ha habido un problema con su petición, vuelva a intentarlo mas tarde'
+			'Ha habido un problema con su petición, vuelva a intentarlo mas tarde'
 		);
 	}
 }
