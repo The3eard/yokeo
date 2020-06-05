@@ -83,8 +83,10 @@ $('#datepicker').flatpickr({
 });
 
 /* Creación de evento - nombre */
-
-document.querySelector('#nameNextButton').addEventListener('click', addName);
+if (document.querySelector('#nameNextButton') === null) {
+} else {
+	document.querySelector('#nameNextButton').addEventListener('click', addName);
+}
 
 function addName() {
 	let regex = /[a-zA-Z][a-zA-Z0-9-\s-.-]{5,32}/gi;
@@ -120,7 +122,10 @@ function responseId(json) {
 /* Creación de evento - fecha y hora */
 var dates = 0;
 
-document.querySelector('#dateNextButton').addEventListener('click', addDate);
+if (document.querySelector('#dateNextButton') === null) {
+} else {
+	document.querySelector('#dateNextButton').addEventListener('click', addDate);
+}
 
 function addDate() {
 	let toDb = document.querySelector('#datepicker').value;
@@ -163,7 +168,10 @@ function finishDate(json) {
 }
 /* Creación de evento - Objetos */
 
-document.querySelector('#objNextButton').addEventListener('click', addObj);
+if (document.querySelector('#objNextButton') === null) {
+} else {
+	document.querySelector('#objNextButton').addEventListener('click', addObj);
+}
 
 function addObj() {
 	let obj = document.querySelector('#formNewObjTxt').value;
@@ -183,8 +191,6 @@ function voteObj(json) {
 	$.post('../php/addObjVoted.php', param, finishObj, 'json');
 }
 
-document.querySelector('#objNextButton').addEventListener('click', finishObj);
-
 function finishObj(json) {
 	if (json === 0) {
 	} else {
@@ -194,9 +200,14 @@ function finishObj(json) {
 }
 
 /* Creación de evento - Lugar */
-document
-	.querySelector('#finishQuantumatic')
-	.addEventListener('click', getLocation);
+
+if (document.querySelector('#finishQuantumatic') === null) {
+} else {
+	document
+		.querySelector('#finishQuantumatic')
+		.addEventListener('click', getLocation);
+}
+
 var places = 0;
 
 function getLocation() {

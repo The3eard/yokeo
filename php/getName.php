@@ -8,7 +8,7 @@ $id = $_GET['id'];
 	die(mysqli_error($conexion));
 mysqli_set_charset($conexion, 'utf8');
 $sql =
-	'select e.nombre from evento e where e.id =' . $id;
+	'SELECT e.nombre from evento e where e.id =' . $id;
 $data = mysqli_query($conexion, $sql);
 while ($row = mysqli_fetch_array($data)) {
 	$response = $row["nombre"];

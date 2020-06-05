@@ -27,6 +27,10 @@
 			integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN"
 			crossorigin="anonymous"
 		/>
+		<link
+			rel="stylesheet"
+			href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css"
+		/>
 		<!-- CSS -->
 		<link rel="stylesheet" href="../css/style.css" />
 	</head>
@@ -101,8 +105,69 @@
 		<!--  -->
 		<!-- Contents -->
 		<div class="row container col-12 justify-content-center">
-			<h2 class="col-8 mt-5 pt-4" id="eventName"></h2>
-			<h4 class="col-8" id="eventPalces"></h4>
+			<h1 class="col-8 mt-5 pt-4 text-center mb-5" id="eventName"></h1>
+			<div id="datesEventDiv" class="col-12 row justify-content-center">
+				<h4 class="col-12 col-md-8">Fechas</h4>
+				<div id="eventDates" class="col-12 col-md-8 offset-1"></div>
+				<!-- Fechas -->
+				<div id="formNewDateDiv" class="col-12 col-md-8">
+					<label class="offset-1"
+						><strong>Introduzca fecha y hora</strong></label
+					>
+					<div class="col-12 offset-1">
+						<div class="input-group col-12">
+							<div class="input-group-prepend">
+								<div class="input-group-text col-12">
+									<i class="fa fa-calendar"></i>
+								</div>
+							</div>
+							<input
+								type="text"
+								id="datepicker"
+								placeholder="Seleccione fecha y hora"
+								id="formNewDateTxt"
+								class="form-control col-12 col-md-8"
+								required="required"
+							/>
+						</div>
+					</div>
+					<div class="col-12 row justify-content-center mt-3">
+						<button id="addDate" class="btn btn-primary row">
+							Añadir fecha
+						</button>
+					</div>
+				</div>
+			</div>
+			<!-- Objetos -->
+			<div id="objsEventDiv" class="col-12 row justify-content-center">
+				<h4 class="col-12 col-md-8">Objetos</h4>
+				<div id="eventObjs" class="col-12 col-md-8 offset-1"></div>
+				<div id="formNewObjDiv" class="col-12 col-md-8">
+					<label class="offset-1"><strong>Introduzca objeto</strong></label>
+					<div class="col-12 offset-1">
+						<div class="input-group col-12">
+							<div class="input-group-prepend">
+								<div class="input-group-text col-12">
+									<i class="fa fa-dribbble"></i>
+								</div>
+							</div>
+							<input
+								type="text"
+								id="formNewObj"
+								placeholder="Introduzca objeto"
+								id="formNewObj"
+								class="form-control col-12 col-md-8"
+								required="required"
+							/>
+						</div>
+					</div>
+					<div class="col-12 row justify-content-center mt-3">
+						<button id="addObje" class="btn btn-primary row">
+							Añadir objeto
+						</button>
+					</div>
+				</div>
+			</div>
 		</div>
 		<!--  -->
 		<!--  -->
@@ -145,5 +210,8 @@
 		></script>
 		<script src="../js/index.js"></script>
 		<script src="../js/event.js"></script>
+		<script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+		<script src="https://npmcdn.com/flatpickr/dist/l10n/es.js"></script>
+		<script src="../js/new.js"></script>
 	</body>
 </html>
