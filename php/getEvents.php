@@ -14,7 +14,7 @@ WHERE p.idEvento = e.id
 and e.id = f.idEvento
 and e.id = l.idEvento
 AND p.emailUsuario = "' . $user . '"
-GROUP BY e.nombre
+GROUP BY e.id
 ORDER BY f.fecha';
 $resultado = mysqli_query($conexion, $sql);
 $response = array();

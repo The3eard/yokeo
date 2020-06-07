@@ -132,7 +132,7 @@
 						</div>
 					</div>
 					<div class="col-12 row justify-content-center mt-3">
-						<button id="addDate" class="btn btn-primary row">
+						<button id="addDate" class="mb-3 btn btn-primary row">
 							Añadir fecha
 						</button>
 					</div>
@@ -162,12 +162,31 @@
 						</div>
 					</div>
 					<div class="col-12 row justify-content-center mt-3">
-						<button id="addObje" class="btn btn-primary row">
+						<button id="addObj" class="mb-3 btn btn-primary row">
 							Añadir objeto
 						</button>
 					</div>
 				</div>
 			</div>
+			<!-- Lugares -->
+			<div id="objsEventDiv" class="col-12 row justify-content-center formMap">
+				<h4 class="col-12 col-md-8">Lugares</h4>
+				<div id="eventPlaces" class="col-12 col-md-8 offset-1"></div>
+			</div>
+		</div>
+		<input
+			id="googleMapsNew"
+			class="controls form-control formMap"
+			type="text"
+			placeholder="Search Box"
+		/>
+		<br />
+		<div id="map" class="row col-11 col-md-6 align-items-center formMap"></div>
+		<br />
+		<div class="col-12 row justify-content-center mt-3">
+			<button id="addPlace" class="mb-3 btn btn-primary row">
+				Añadir Lugar
+			</button>
 		</div>
 		<!--  -->
 		<!--  -->
@@ -207,6 +226,11 @@
 			src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
 			integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
 			crossorigin="anonymous"
+		></script>
+		<script
+			src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC0zOcrKZQiVP6Gmehtx2CQHSfpl9zIEfY&libraries=places&callback=initAutocomplete"
+			async
+			defer
 		></script>
 		<script src="../js/index.js"></script>
 		<script src="../js/event.js"></script>
