@@ -72,25 +72,14 @@
 						<li class="nav-item woLog">
 							<a class="nav-link woLog" href="./registro.html">Registrarse</a>
 						</li>
-						<li class="nav-item dropdown wLog">
-							<a
-								class="nav-link dropdown-toggle wLog"
-								href="#"
-								id="navbarDropdown"
-								role="button"
-								data-toggle="dropdown"
-								aria-haspopup="true"
-								aria-expanded="false"
+						<li class="nav-item wLog">
+							<button
+								type="button"
+								class="wLog btn btn-danger btn-sm mt-1 ml-2"
+								id="logOutBtn"
 							>
-								Mi cuenta
-							</a>
-							<div class="dropdown-menu" aria-labelledby="navbarDropdown">
-								<a class="dropdown-item" href="#">Mis datos</a>
-								<div class="dropdown-divider"></div>
-								<a class="dropdown-item" href="#" id="logOutBtn"
-									>Cerrar sesión</a
-								>
-							</div>
+								Cerrar Sesión
+							</button>
 						</li>
 					</ul>
 				</div>
@@ -213,6 +202,7 @@
 			</button>
 		</div>
 		<!-- jQuery, jQueryUI, Popper and Bootstrap -->
+		<script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
 		<script
 			src="https://code.jquery.com/jquery-3.4.1.min.js"
 			integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
@@ -238,6 +228,7 @@
 			async
 			defer
 		></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.2/rollups/aes.js"></script>
 		<script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
 		<script src="https://npmcdn.com/flatpickr/dist/l10n/es.js"></script>
 		<script src="../js/new.js"></script>

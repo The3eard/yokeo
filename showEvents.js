@@ -33,6 +33,7 @@ function createEventDiv(json) {
 }
 
 function goToEvent(id) {
+	// 	window.location.replace('../html/event.html?id=' + id);
 	window.location.replace('../../yokeo/html/event.html?id=' + id);
 }
 

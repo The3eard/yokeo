@@ -50,40 +50,29 @@
 				<div class="collapse navbar-collapse" id="navbarResponsive">
 					<ul class="navbar-nav ml-auto">
 						<li class="nav-item active">
-							<a class="nav-link" href="index.html">Inicio </a>
+							<a class="nav-link" href="./index.html">Inicio </a>
 						</li>
 						<li class="nav-item wLog">
-							<a class="nav-link wLog" href="html/new.html">Crear evento </a>
+							<a class="nav-link wLog" href="./html/new.html">Crear evento </a>
 						</li>
 						<li class="nav-item woLog">
-							<a class="nav-link woLog" href="html/login.html"
+							<a class="nav-link woLog" href="./html/login.html"
 								>Iniciar sesión</a
 							>
 						</li>
 						<li class="nav-item woLog">
-							<a class="nav-link woLog" href="html/registro.html"
+							<a class="nav-link woLog" href="./html/registro.html"
 								>Registrarse</a
 							>
 						</li>
-						<li class="nav-item dropdown wLog">
-							<a
-								class="nav-link dropdown-toggle wLog"
-								href="#"
-								id="navbarDropdown"
-								role="button"
-								data-toggle="dropdown"
-								aria-haspopup="true"
-								aria-expanded="false"
+						<li class="nav-item wLog">
+							<button
+								type="button"
+								class="wLog btn btn-danger btn-sm mt-1 ml-2"
+								id="logOutBtn"
 							>
-								Mi cuenta
-							</a>
-							<div class="dropdown-menu" aria-labelledby="navbarDropdown">
-								<a class="dropdown-item" href="#">Mis datos</a>
-								<div class="dropdown-divider"></div>
-								<a class="dropdown-item" href="#" id="logOutBtn"
-									>Cerrar sesión</a
-								>
-							</div>
+								Cerrar Sesión
+							</button>
 						</li>
 					</ul>
 				</div>
@@ -138,6 +127,8 @@
 			crossorigin="anonymous"
 		></script>
 		<!-- JavaScript -->
+		<script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.2/rollups/aes.js"></script>
 		<script src="js/index.js"></script>
 		<script src="js/showEvents.js"></script>
 	</body>

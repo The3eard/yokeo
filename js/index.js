@@ -57,3 +57,45 @@ function logOut() {
 	delCookie();
 	toIndex();
 }
+
+let key = CryptoJS.enc.Hex.parse('36ebe205bcdfc499a25e6923f4450fa8');
+let iv = CryptoJS.enc.Hex.parse('be410fea41df7162a679875ec131cf2c');
+
+function encrypt(message) {
+	let encrypted = CryptoJS.AES.encrypt(message, key, {
+		iv: iv,
+		mode: CryptoJS.mode.CBC,
+		padding: CryptoJS.pad.Pkcs7,
+	});
+	return encrypted.toString();
+}
+
+function decrypt(message) {
+	let decrypted = CryptoJS.AES.decrypt(message, key, {
+		iv: iv,
+		mode: CryptoJS.mode.CBC,
+		padding: CryptoJS.pad.Pkcs7,
+	});
+	return decrypted.toString(CryptoJS.enc.Utf8);
+}
+
+function sweetAlertReload(msg) {
+	Swal.fire({
+		text: msg,
+		confirmButtonText: 'Ok',
+	}).then(() => location.reload());
+}
+
+function sweetAlertToIndex(msg) {
+	Swal.fire({
+		text: msg,
+		confirmButtonText: 'Ok',
+	}).then(() => toIndex());
+}
+
+function sweetAlert(msg) {
+	Swal.fire({
+		text: msg,
+		confirmButtonText: 'Ok',
+	});
+}

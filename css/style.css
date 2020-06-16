@@ -157,3 +157,10 @@ fieldset {
 	background-color: #16aabd;
 	border-color: #16aabd;
 }
+
+.swal2-styled.swal2-confirm {
+	background-color: #16aabd !important ;
+}
+.swal2-styled.swal2-cancel {
+	background-color: red !important ;
+}

@@ -97,7 +97,7 @@ function addName() {
 		event.preventDefault();
 		$.post('../php/newEvent.php', eventParams, responseId, 'json');
 	} else {
-		alert(
+		sweetAlert(
 			'Introduzca descripción entre 5 y 32 caracteres alfanuméricos. Se admiten espacios'
 		);
 	}
@@ -130,7 +130,7 @@ if (document.querySelector('#dateNextButton') === null) {
 function addDate() {
 	let toDb = document.querySelector('#datepicker').value;
 	if (toDb === '') {
-		alert('Introduzca fecha');
+		sweetAlert('Introduzca fecha');
 	} else {
 		let today = new Date();
 		let DD = String(today.getDate()).padStart(2, '0');
@@ -147,7 +147,7 @@ function addDate() {
 			let param = 'id=' + getId() + '&date=' + toDb + '&mostrar=' + toDom;
 			$.post('../php/addDate.php', param, voteDate, 'json');
 		} else {
-			alert('Añada una fecha válida');
+			sweetAlert('Añada una fecha válida');
 		}
 	}
 }
@@ -161,7 +161,7 @@ function voteDate(json) {
 function finishDate(json) {
 	check(json);
 	if (dates === 0) {
-		alert('Introduzca una fecha para poder continuar');
+		sweetAlert('Introduzca una fecha para poder continuar');
 	} else {
 		next('#formNewDateDiv', '#formNewObjDiv');
 	}
@@ -213,7 +213,7 @@ var places = 0;
 function getLocation() {
 	let dir = document.querySelector('#googleMapsNew').value;
 	if (dir === '') {
-		alert('Introduzca Lugar');
+		sweetAlert('Introduzca Lugar');
 	} else {
 		$.get(
 			'https://maps.googleapis.com/maps/api/geocode/json?address=' +
@@ -231,7 +231,6 @@ function addPlace(json) {
 	let lng = json.results[0].geometry.location.lng;
 	let name = json.results[0].formatted_address;
 	event.preventDefault();
-	console.log(lat + lng + name);
 	let param = 'id=' + getId() + '&name=' + name + '&lat=' + lat + '&lng=' + lng;
 	$.post('../php/addPlace.php', param, votePlace, 'json');
 }
@@ -245,10 +244,9 @@ function votePlace(json) {
 function finishPlaces() {
 	if (places === 0) {
 		event.preventDefault();
-		alert('Debe añadir una localización');
+		sweetAlert('Debe añadir una localización');
 	} else {
-		alert('Ha creado su evento correctamente');
-		toIndex();
+		sweetAlertToIndex('Ha creado su evento correctamente');
 	}
 }
 
@@ -262,7 +260,6 @@ function next(currentDiv, nextDiv) {
 
 function check(json) {
 	if (json.error === 1) {
-		alert('ERROR');
-		toIndex();
+		sweetAlertToIndex('ERROR');
 	}
 }

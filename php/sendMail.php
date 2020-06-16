@@ -7,32 +7,36 @@ require './PHPMailer/src/Exception.php';
 require './PHPMailer/src/PHPMailer.php';
 require './PHPMailer/src/SMTP.php';
 
+$myBody = $_POST['body'];
+$myTo = $_POST['to'];
+$myTitle = $_POST['name'];
+
 $mail = new PHPMailer(true);
 
 try {
 	//Server settings
 	$mail->isSMTP();
-	$mail->SMTPDebug  = 2;
+	// $mail->SMTPDebug  = 2;
 	$mail->Host       = 'smtp.gmail.com';
 	$mail->SMTPAuth   = true;
 	$mail->Username   = 'xafuegon590@ieshnosmachado.org';
-	$mail->Password   = '@The3eard';
+	$mail->Password   = '@1MachadoBros';
 	$mail->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS;
 	$mail->Port       = 465;
 
 	//Headers
+	$mail->setLanguage('es', './PHPMailer/language/phpmailer.lang-es.php');
 	$mail->setFrom('xafuegon590@ieshnosmachado.org', 'yokeo');
-	$mail->addAddress('pantocreitor@gmail.com');
+	$mail->addAddress($myTo);
 
 
 	// Content
 	$mail->isHTML(true);
-	$mail->Subject = 'Here is the subject';
-	$mail->Body    = 'This is the HTML message body <b>in bold!</b>';
-	$mail->AltBody = 'This is the body in plain text for non-HTML mail clients';
+	$mail->Subject = 'Yokeo! - ' . $myTitle;
+	$mail->Body    = $myBody;
 
 	$mail->send();
-	echo 'Mensaje enviado';
+	echo json_encode('Mensaje enviado');
 } catch (Exception $e) {
-	echo "Mensaje no enviado. Error: {$mail->ErrorInfo}";
+	echo json_encode("Mensaje no enviado. Error: {$mail->ErrorInfo}");
 }

@@ -11,17 +11,23 @@ function compruebaUsuario() {
 		if (regexMail.test(mail)) {
 			altaUserDb(user, mail);
 		} else {
-			alert('Introduzca una dirección de correo electrónico válida');
+			sweetAlert('Introduzca una dirección de correo electrónico válida');
 			return false;
 		}
 	} else {
-		alert('Introduzca un nombre de usuario válido');
+		sweetAlert('Introduzca un nombre de usuario válido');
 		return false;
 	}
 }
 
 function altaUserDb(user, mail) {
-	param = 'user=' + user + '&mail=' + mail;
+	param =
+		'user=' +
+		user +
+		'&mail=' +
+		mail +
+		'&pass=' +
+		encrypt(document.querySelector('#formLogPass').value.trim());
 	event.preventDefault();
 	$.post('../php/registro.php', param, respuestaAltaUser, 'json');
 	return false;
@@ -29,9 +35,8 @@ function altaUserDb(user, mail) {
 
 function respuestaAltaUser(json) {
 	if (json.error) {
-		alert(json.mensaje);
+		sweetAlert(json.mensaje);
 	} else {
-		alert(json.mensaje);
-		toIndex();
+		sweetAlertToIndex(json.mensaje);
 	}
 }

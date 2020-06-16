@@ -3,7 +3,6 @@
 require './conn.php';
 
 $id = $_POST['id'];
-$obj = $_POST['obj'];
 
 $db = new mysqli($servidor, $usuario, $password, $basedatos);
 if ($db->connect_error) {
@@ -14,17 +13,14 @@ if ($db->connect_error) {
 }
 mysqli_set_charset($db, 'utf8');
 $stmt = $db->prepare(
-	'INSERT INTO objetopropuesto(idEvento, nombre) VALUES (?,?)'
+	'DELETE FROM participa WHERE idEvento= ?'
 );
-$stmt->bind_param('ss', $id, $obj);
+$stmt->bind_param('i', $id);
 $resultado = $stmt->execute();
 $last_id = $db->insert_id;
 if ($resultado) {
-	$respuesta['error'] = 0;
-	$respuesta['mensaje'] = 'OK';
-	$respuesta['id'] = $last_id;
+	$respuesta = 'Evento borrado';
 } else {
-	$respuesta['error'] = 1;
-	$respuesta['mensaje'] = 'Error';
+	$respuesta = 'ha habido un error en su petición';
 }
 echo json_encode($respuesta);

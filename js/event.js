@@ -1,17 +1,16 @@
 const id = new URLSearchParams(location.search).get('id');
-const invite = new URLSearchParams(location.search).get('invite');
 const user = getUser();
+const invite = new URLSearchParams(location.search).get('invite');
 
 onInit();
 function onInit() {
 	if (user === '') {
-		alert('Regístrese para poder acceder al servicio');
-		toIndex();
+		sweetAlertToIndex('Regístrese para poder acceder al servicio');
 	} else if (invite) {
-		console.log('añadir al evento');
+		let param = 'event=' + id + '&user=' + user;
+		$.post('../php/addUserToEvent.php', param, checkThis, 'json');
 	} else {
 		let param = 'id=' + id + '&user=' + user;
-		console.log(param);
 		$.get('../php/getName.php', param, makeTitle, 'json');
 		$.get('../php/getDates.php', param, makeDatesList, 'json');
 		$.get('../php/getObjs.php', param, makeObjsList, 'json');
@@ -77,7 +76,7 @@ document.querySelector('#addDate').addEventListener('click', addDateInEvent);
 function addDateInEvent() {
 	let toDb = document.querySelector('#datepicker').value;
 	if (toDb === '') {
-		alert('Introduzca fecha');
+		sweetAlert('Introduzca fecha');
 	} else {
 		let today = new Date();
 		let DD = String(today.getDate()).padStart(2, '0');
@@ -94,7 +93,7 @@ function addDateInEvent() {
 			let param = 'id=' + id + '&date=' + toDb + '&mostrar=' + toDom;
 			$.post('../php/addDate.php', param, checkThis, 'json');
 		} else {
-			alert('Añada una fecha válida');
+			sweetAlert('Añada una fecha válida');
 		}
 	}
 }
@@ -149,7 +148,7 @@ document.querySelector('#addObj').addEventListener('click', addObjInEvent);
 function addObjInEvent() {
 	let obj = document.querySelector('#formNewObj').value;
 	if (obj === '') {
-		alert('Introduzca objeto');
+		sweetAlert('Introduzca objeto');
 	} else {
 		let param = 'id=' + id + '&obj=' + obj;
 		$.post('../php/addObj.php', param, checkThis, 'json');
@@ -210,7 +209,7 @@ var placesN = 0;
 function getLocationInEvent() {
 	let dir = document.querySelector('#googleMapsNew').value;
 	if (dir === '') {
-		alert('Introduzca Lugar');
+		sweetAlert('Introduzca Lugar');
 	} else {
 		$.get(
 			'https://maps.googleapis.com/maps/api/geocode/json?address=' +
@@ -234,22 +233,113 @@ function addPlaceInEvent(json) {
 
 /* Check global */
 function checkThis(json) {
-	console.log(json);
 	if (json.error === 0) {
-		alert('Su petición se ha procesado correctamente');
-		location.reload();
+		let msg = 'Su petición se ha procesado correctamente';
+		invite ? sweetAlertToIndex(msg) : sweetAlertReload(msg);
 	} else {
-		alert(
+		sweetAlert(
 			'Ha habido un problema con su petición, vuelva a intentarlo mas tarde'
 		);
 	}
 }
 
 /* Send mail functions */
-var eventName;
-var assistants;
-var dates;
-var places;
+let mailTitle = document.querySelector('#eventName').innerText;
+let mailPeople;
+let mailDates;
+let mailObjs;
+let mailPlaces;
+
+document.querySelector('#sendMailButton').addEventListener('click', getAllData);
+
+function getAllData() {
+	let param = 'id=' + id;
+	$.get('../php/mailGetPeople.php', param, saveAssistants, 'json').done(() =>
+		$.get('../php/mailGetDates.php', param, saveDates, 'json').done(() =>
+			$.get('../php/mailGetObjs.php', param, saveObjs, 'json').done(() =>
+				$.get('../php/mailGetPlaces.php', param, savePlaces, 'json').done(() =>
+					sendMail()
+				)
+			)
+		)
+	);
+}
+
 function sendMail() {
-	$.get('../php/sendMail.php', checkThis, 'json');
+	let body;
+	let params;
+	let name = document.getElementById('eventName').innerText;
+	body = '<div><h3>' + name + '</h3>';
+	body += '<h4>Asistentes</h4><ul>';
+	mailPeople.forEach(e => {
+		body += '<li>' + e[0] + '</li>';
+	});
+	body += '</ul><h4>Fechas</h4><ul>';
+	mailDates.forEach(e => {
+		body += '<li>' + e.fecha + ', votos: ' + e.voto + '</li>';
+	});
+	body += '</ul><h4>Objetos</h4><ul>';
+	mailObjs.forEach(e => {
+		if (e.user === null) {
+			body += '<li>' + e.objeto + '</li>';
+		} else {
+			body += '<li>' + e.objeto + '(' + e.user + ')</li>';
+		}
+	});
+	body += '</ul><h4>Lugares</h4><ul>';
+	mailPlaces.forEach(e => {
+		body += '<li>' + e.lugar + ', votos: ' + e.votos + '</li>';
+	});
+	body += '</ul></div>';
+	mailPeople.forEach(e => {
+		param = 'to=' + e[0] + '&body=' + body + '&name=' + name;
+		$.post('../php/sendMail.php', param, finish, 'json');
+	});
+}
+
+function saveAssistants(json) {
+	mailPeople = json;
+}
+
+function saveObjs(json) {
+	mailObjs = json;
+}
+
+function saveDates(json) {
+	mailDates = json;
+}
+
+function savePlaces(json) {
+	mailPlaces = json;
+}
+
+document.querySelector('#createLink').addEventListener('click', createLink);
+
+function createLink() {
+	let msg = 'http://yokeo.rf.gd/html/event.html?invite=true&id=' + id;
+	Swal.fire({
+		title: 'Enlace de invitación',
+		text: msg,
+		confirmButtonText: 'Ok',
+	});
+}
+
+function finish(json) {
+	sweetAlertToIndex(json);
+}
+
+document.querySelector('#delete').addEventListener('click', deleteEvent);
+
+function deleteEvent() {
+	Swal.fire({
+		title: 'Borrar evento',
+		text: '¿Está seguro de que desea borrar el evento?',
+		confirmButtonText: 'Si',
+		showCancelButton: true,
+	}).then(result => {
+		if (result.value) {
+			let param = 'id=' + id;
+			$.post('../php/deleteEvent.php', param, finish, 'json');
+		}
+	});
 }
